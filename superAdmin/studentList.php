@@ -171,11 +171,8 @@ function showValues(str) {
                                                 </div>
                                             <div class="col-6">
                                                 <div class="form-group">
-<<<<<<< HEAD
                                                      <label for="x_card_code" class="control-label mb-1">Session</label>
-=======
                                                      <label for="x_card_code" class="control-label mb-1">School Year</label>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                     <?php 
                                                     $query=mysqli_query($con,"select * from tblsession where isActive = 1");                        
                                                     $count = mysqli_num_rows($query);
