@@ -19,7 +19,6 @@ if(isset($_POST['submit'])){
     $facultyId=$_POST['facultyId'];
     $dateAdded = date("Y-m-d");
 
-<<<<<<< HEAD
     //Checks the Course Code
     $query=mysqli_query($con,"select * from tblcourse where courseCode ='$courseCode'");
     $ret=mysqli_fetch_array($query);
@@ -27,7 +26,6 @@ if(isset($_POST['submit'])){
      if($ret > 0){ //Check the coure Title
       $alertStyle ="alert alert-danger";
       $statusMsg="This Course already exist!";
-=======
     //Checks ang  Course Code
     $query=mysqli_query($con,"select * from tblcourse where courseCode ='$courseCode'");
     $ret=mysqli_fetch_array($query);
@@ -35,7 +33,6 @@ if(isset($_POST['submit'])){
      if($ret > 0){ //Check ag coure Title
       $alertStyle ="alert alert-danger";
       $statusMsg="This Subject already exist!";
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 
     }
     else{
@@ -45,11 +42,8 @@ if(isset($_POST['submit'])){
     if ($query) {
         
        $alertStyle ="alert alert-success";
-<<<<<<< HEAD
        $statusMsg="Course Created and Assigned Successfully!";
-=======
        $statusMsg="Subject Created and Assigned Successfully!";
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
     }
     else
     {
@@ -61,11 +55,8 @@ if(isset($_POST['submit'])){
   ?>
 
 <!doctype html>
-<<<<<<< HEAD
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-=======
  <html class="no-js" lang=""> 
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,10 +78,7 @@ if(isset($_POST['submit'])){
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-<<<<<<< HEAD
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-=======
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 
 <script>
 
@@ -111,15 +99,12 @@ function showValues(str) {
         return;
     } else { 
         if (window.XMLHttpRequest) {
-<<<<<<< HEAD
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
         } else {
             // code for IE6, IE5
-=======
             xmlhttp = new XMLHttpRequest();
         } else {
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function() {
@@ -138,15 +123,12 @@ function showLecturer(str) {
         return;
     } else { 
         if (window.XMLHttpRequest) {
-<<<<<<< HEAD
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
         } else {
             // code for IE6, IE5
-=======
             xmlhttp = new XMLHttpRequest();
         } else {
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function() {
@@ -161,7 +143,6 @@ function showLecturer(str) {
 </script>
 </head>
 <body>
-<<<<<<< HEAD
     <!-- Left Panel -->
     <?php $page="courses"; include 'includes/leftMenu.php';?>
 
@@ -170,22 +151,17 @@ function showLecturer(str) {
     <!-- Left Panel -->
 
     <!-- Right Panel -->
-=======
     <?php $page="courses"; include 'includes/leftMenu.php';?>
 
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 
     <div id="right-panel" class="right-panel">
 
         <!-- Header-->
-<<<<<<< HEAD
             <?php include 'includes/header.php';?>
         <!-- /header -->
         <!-- Header-->
-=======
         <?php include 'includes/header.php';?>
 
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
@@ -201,16 +177,13 @@ function showLecturer(str) {
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-<<<<<<< HEAD
 								<!-- Log on to codeastro.com for more projects! -->
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#">Courses</a></li>
                                     <li class="active">Add Courses</li>
-=======
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#">Subject</a></li>
                                     <li class="active">Add Subs</li>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                 </ol>
                             </div>
                         </div>
@@ -225,16 +198,13 @@ function showLecturer(str) {
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-<<<<<<< HEAD
                                 <strong class="card-title"><h2 align="center">Add New Course</h2></strong>
                             </div>
                             <div class="card-body">
                                 <!-- Credit Card -->
-=======
                                 <strong class="card-title"><h2 align="center">Add New</h2></strong>
                             </div>
                             <div class="card-body">
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                 <div id="pay-invoice">
                                     <div class="card-body">
                                        <div class="<?php echo $alertStyle;?>" role="alert"><?php echo $statusMsg;?></div>
@@ -242,7 +212,6 @@ function showLecturer(str) {
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-<<<<<<< HEAD
 													<!-- Log on to codeastro.com for more projects! -->
                                                         <label for="cc-exp" class="control-label mb-1">Course Title</label>
                                                         <input id="" name="courseTitle" type="text" class="form-control cc-exp" value="" Required data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="Course Title">
@@ -253,7 +222,6 @@ function showLecturer(str) {
                                                     <label for="x_card_code" class="control-label mb-1">Course Code</label>
                                                         <input id="" name="courseCode" type="text" class="form-control cc-exp" value="" Required placeholder="Course Code">
                                                         <!-- <input id="" maxlength="4" onkeypress="return isNumber(event)" name="courseId" type="text" class="form-control cc-cvc" Required data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" placeholder="Course ID should start from 0001"> -->
-=======
                                                         <label for="cc-exp" class="control-label mb-1">Name</label>
                                                         <input id="" name="courseTitle" type="text" class="form-control cc-exp" value="" Required data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="e.g Math, English">
                                                     </div>
@@ -261,14 +229,12 @@ function showLecturer(str) {
                                                 <div class="col-6">
                                                     <label for="x_card_code" class="control-label mb-1">Subject Code</label>
                                                         <input id="" name="courseCode" type="text" class="form-control cc-exp" value="" Required placeholder="e.g Math101, Eng101">
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                         </div>
                                                     </div>
                                                     <div>
                                                 <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-<<<<<<< HEAD
 													<!-- Log on to codeastro.com for more projects! -->
                                                         <label for="cc-exp" class="control-label mb-1">Course Unit</label>
                                                         <input id="" name="courseUnit" type="text" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="Course Unit">
@@ -277,19 +243,14 @@ function showLecturer(str) {
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                      <label for="x_card_code" class="control-label mb-1">Level</label>
-=======
                                                      <label for="x_card_code" class="control-label mb-1">Class</label>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                     <?php 
                                                     $query=mysqli_query($con,"select * from tbllevel");                        
                                                     $count = mysqli_num_rows($query);
                                                     if($count > 0){                       
                                                         echo ' <select required name="levelId" class="custom-select form-control">';
-<<<<<<< HEAD
                                                         echo'<option value="">--Select Level--</option>';
-=======
                                                         echo'<option value="">--Select Class--</option>';
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                         while ($row = mysqli_fetch_array($query)) {
                                                         echo'<option value="'.$row['Id'].'" >'.$row['levelName'].'</option>';
                                                             }
@@ -298,27 +259,21 @@ function showLecturer(str) {
                                                     ?>   
                                                 </div>
                                                 </div>
-<<<<<<< HEAD
                                             </div>
                                              <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="cc-exp" class="control-label mb-1">Semester</label>
-=======
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="cc-exp" class="control-label mb-1">Grading</label>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                     <?php 
                                                     $query=mysqli_query($con,"select * from tblsemester");                        
                                                     $count = mysqli_num_rows($query);
                                                     if($count > 0){                       
                                                         echo ' <select required name="semesterId" class="custom-select form-control">';
-<<<<<<< HEAD
                                                         echo'<option value="">--Select Semester--</option>';
-=======
                                                         echo'<option value="">--Select Grading--</option>';
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                         while ($row = mysqli_fetch_array($query)) {
                                                         echo'<option value="'.$row['Id'].'" >'.$row['semesterName'].'</option>';
                                                             }
@@ -326,12 +281,10 @@ function showLecturer(str) {
                                                             }
                                                     ?>                                                       
                                                     </div>
-<<<<<<< HEAD
                                                 </div><!-- Log on to codeastro.com for more projects! -->
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                      <label for="x_card_code" class="control-label mb-1">Faculty</label>
-=======
                                                 </div>
                                             </div>
                                              <div class="row">
@@ -339,17 +292,13 @@ function showLecturer(str) {
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                      <label for="x_card_code" class="control-label mb-1">Classroom</label>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                     <?php 
                                                         $query=mysqli_query($con,"select * from tblfaculty ORDER BY facultyName ASC");                        
                                                         $count = mysqli_num_rows($query);
                                                         if($count > 0){                       
                                                             echo ' <select required name="facultyId" onchange="showValues(this.value)" class="custom-select form-control">';
-<<<<<<< HEAD
                                                             echo'<option value="">--Select Faculty--</option>';
-=======
                                                             echo'<option value="">--Select Room--</option>';
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                             while ($row = mysqli_fetch_array($query)) {
                                                             echo'<option value="'.$row['Id'].'" >'.$row['facultyName'].'</option>';
                                                                 }
@@ -359,11 +308,8 @@ function showLecturer(str) {
                                                                
                                                 </div>
                                                 </div>
-<<<<<<< HEAD
                                             </div>
                                              <div class="row">
-=======
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                     <?php
@@ -372,7 +318,6 @@ function showLecturer(str) {
                                                                                                             
                                                 </div>
                                                 </div>
-<<<<<<< HEAD
                                                
                                             </div>
                                                 <button type="submit" name="submit" class="btn btn-success">Add Course</button>
@@ -383,7 +328,6 @@ function showLecturer(str) {
                             </div>
                         </div> <!-- .card -->
                     </div><!--/.col-->
-=======
                                             </div>
                                                 <button type="submit" name="submit" class="btn btn-success">Add</button>
                                         
@@ -393,23 +337,18 @@ function showLecturer(str) {
                             </div>
                         </div>
                     </div>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                
 
                 <br><br>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-<<<<<<< HEAD
                                 <strong class="card-title"><h2 align="center">All Courses</h2></strong>
-=======
                                 <strong class="card-title"><h2 align="center">All Subjects</h2></strong>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-hover table-striped table-bordered">
                                     <thead>
-<<<<<<< HEAD
                                         <tr><!-- Log on to codeastro.com for more projects! -->
                                             <th>#</th>
                                             <th>Title</th>
@@ -419,7 +358,6 @@ function showLecturer(str) {
                                             <th>Faculty</th>
                                             <th>Department</th>
                                              <th>Semester</th>
-=======
                                         <tr>
                                             <th>#</th>
                                             <th>Title</th>
@@ -428,7 +366,6 @@ function showLecturer(str) {
                                             <th>Classroom</th>
                                             <th>Section</th>
                                              <th>Grading</th>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                             <th>Date</th>
                                             <th>Actions</th>
                                         </tr>
@@ -451,21 +388,15 @@ function showLecturer(str) {
                 <td><?php echo $cnt;?></td>
                 <td><?php  echo $row['courseTitle'];?></td>
                 <td><?php  echo $row['courseCode'];?></td>
-<<<<<<< HEAD
                 <td><?php  echo $row['courseUnit'];?></td>
-=======
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                 <td><?php  echo $row['levelName'];?></td>
                 <td><?php  echo $row['facultyName'];?></td>
                 <td><?php  echo $row['departmentName'];?></td>
                 <td><?php  echo $row['semesterName'];?></td>
                 <td><?php  echo $row['dateAdded'];?></td>
                 <td><a href="editCourses.php?editCourseId=<?php echo $row['courseCode'];?>" title="Edit Details"><i class="fa fa-edit fa-1x"></i></a>
-<<<<<<< HEAD
                <a onclick="return confirm('Are you sure you want to delete?')" href="deleteCourse.php?delid=<?php echo $row['courseCode'];?>" title="Delete Course"><i class="fa fa-trash fa-1x"></i></a></td>
-=======
                <a onclick="return confirm('Are you sure you want to delete?')" href="deleteCourse.php?delid=<?php echo $row['courseCode'];?>" title="Delete Subject"><i class="fa fa-trash fa-1x"></i></a></td>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                 </tr>
                 <?php 
                 $cnt=$cnt+1;
@@ -476,31 +407,25 @@ function showLecturer(str) {
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
 <!-- end of datatable -->
 
             </div>
         </div><!-- .animated -->
     </div><!-- .content -->
-=======
             </div>
         </div>
     </div>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 
     <div class="clearfix"></div>
 
         <?php include 'includes/footer.php';?>
-<<<<<<< HEAD
 
 <!-- Log on to codeastro.com for more projects! -->
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->
 
-=======
 </div>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
