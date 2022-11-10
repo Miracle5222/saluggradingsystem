@@ -34,11 +34,6 @@
     <link rel="stylesheet" href="../assets/css/style2.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-<<<<<<< HEAD
-
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-=======
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 <script>
 function showValues(str) {
     if (str == "") {
@@ -46,15 +41,8 @@ function showValues(str) {
         return;
     } else { 
         if (window.XMLHttpRequest) {
-<<<<<<< HEAD
-            // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
         } else {
-            // code for IE6, IE5
-=======
-            xmlhttp = new XMLHttpRequest();
-        } else {
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function() {
@@ -69,28 +57,11 @@ function showValues(str) {
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-    <!-- Left Panel -->
     <?php $page="result"; include 'includes/leftMenu.php';?>
-
-   <!-- /#left-panel -->
-
-    <!-- Left Panel -->
-
-    <!-- Right Panel -->
-
-=======
-    <?php $page="result"; include 'includes/leftMenu.php';?>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
     <div id="right-panel" class="right-panel">
 
         <!-- Header-->
             <?php include 'includes/header.php';?>
-<<<<<<< HEAD
-        <!-- /header -->
-        <!-- Header-->
-=======
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
@@ -105,10 +76,6 @@ function showValues(str) {
                     <div class="col-sm-8">
                         <div class="page-header float-right">
                             <div class="page-title">
-<<<<<<< HEAD
-							<!-- Log on to codeastro.com for more projects! -->
-=======
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#">Compute Result</a></li>
@@ -127,17 +94,9 @@ function showValues(str) {
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-<<<<<<< HEAD
-							<!-- Log on to codeastro.com for more projects! -->
                                 <strong class="card-title"><h3 align="center">Select Student to Compute Result (GPA)</h3></strong>
                             </div>
                             <div class="card-body">
-                                <!-- Credit Card -->
-=======
-                                <strong class="card-title"><h3 align="center">Select Student to Compute Result (GPA)</h3></strong>
-                            </div>
-                            <div class="card-body">
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                 <div id="pay-invoice">
                                     <div class="card-body">
                                        <div class="<?php echo $alertStyle;?>" role="alert"><?php echo $statusMsg;?></div>
@@ -146,21 +105,13 @@ function showValues(str) {
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-<<<<<<< HEAD
-                                                      <label for="x_card_code" class="control-label mb-1">Level</label>
-=======
                                                       <label for="x_card_code" class="control-label mb-1">Class</label>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                     <?php 
                                                 $query=mysqli_query($con,"select * from tbllevel");                        
                                                 $count = mysqli_num_rows($query);
                                                 if($count > 0){                       
                                                     echo ' <select required name="levelId" class="custom-select form-control">';
-<<<<<<< HEAD
-                                                    echo'<option value="">--Select Level--</option>';
-=======
                                                     echo'<option value="">--Select Class--</option>';
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                     while ($row = mysqli_fetch_array($query)) {
                                                     echo'<option value="'.$row['Id'].'" >'.$row['levelName'].'</option>';
                                                         }
@@ -227,24 +178,14 @@ function showValues(str) {
                                                 </div>
                                              </div>
                                                 <div>
-<<<<<<< HEAD
-												<!-- Log on to codeastro.com for more projects! -->
-=======
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
                                                 <button type="submit" name="submit" class="btn btn-success">View Student</button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
-                        </div> <!-- .card -->
-                    </div><!--/.col-->
-               
-=======
                         </div>
                     </div>
->>>>>>> 1bb09366e33d936fac926359eee432755bfd56e2
 
                 <br><br>
 
