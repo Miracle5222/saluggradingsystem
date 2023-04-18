@@ -41,6 +41,8 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
+
+   
   </style>
 </head>
 
@@ -78,7 +80,7 @@
     <section id="hero" class="d-flex justify-content-center align-items-center " style="background-image: url('img/sd.jpg');background-position:top;background-repeat:no-repeat;background-size:cover;">
 
       <div class="container position-relative " data-aos="zoom-in" data-aos-delay="100">
-        <h1>Grade Recording System of Salug Daku Elementary<br></h1>
+        <h1 class="landing">Online Grade Recording System of Salug Daku Elementary<br></h1>
 
       </div>
 
