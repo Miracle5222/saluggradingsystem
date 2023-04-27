@@ -228,12 +228,11 @@ $row = mysqli_fetch_array($query)
                                             <th>ID #</th>
                                             <th>Subjects</th>
                                             <th>Grade lvl</th>
-                                            <th>Section</th>
+                                            <th>Grade</th>
 
-                                            <th>1st Grading</th>
-                                            <th>2nd Grading</th>
-                                            <th>3rd Grading</th>
-                                            <th>4th Grading</th>
+                                            <th>Grading</th>
+                                            <th>Room</th>
+
 
                                         </tr>
                                     </thead>
@@ -241,19 +240,26 @@ $row = mysqli_fetch_array($query)
                                         <?php
 
 
-                                        $sql = mysqli_query($con, "SELECT  tblcourse.`subjectId`, tblstudent.`StudentId` ,
-    tbldepartment.`departmentId` ,tblstudent.`firstName`,tblstudent.`lastName`,tblstudent.`contactNumber`,
-    tblstudent.`matricNo`,tblstudent.`otherName`,tblstudent.`schoolyear`, tbldepartment.`departmentName`,tblcourse.`subjectTitle`,
-    tbllevel.`levelName` 
-    FROM tblstudent 
-    INNER JOIN tbldepartment ON tbldepartment.`departmentId` = tblstudent.`departmentId` 
-    INNER JOIN tbllevel ON tbllevel.`levelId` = tbldepartment.`levelId` 
-    INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` where tbldepartment.`departmentId` = ' $_SESSION[departmentId]' and tblstudent.StudentId =     ' $_SESSION[StudentId] ' and tbldepartment.departmentId = '$_SESSION[departmentId] '");
+                                        //                                     $sql = mysqli_query($con, "SELECT  tblcourse.`subjectId`, tblstudent.`StudentId` ,
+                                        // tbldepartment.`departmentId` ,tblstudent.`firstName`,tblstudent.`lastName`,tblstudent.`contactNumber`,
+                                        // tblstudent.`matricNo`,tblstudent.`otherName`,tblstudent.`schoolyear`, tbldepartment.`departmentName`,tblcourse.`subjectTitle`,
+                                        // tbllevel.`levelName` 
+                                        // FROM tblstudent 
+                                        // INNER JOIN tbldepartment ON tbldepartment.`departmentId` = tblstudent.`departmentId` 
+                                        // INNER JOIN tbllevel ON tbllevel.`levelId` = tbldepartment.`levelId` 
+                                        // INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` where tbldepartment.`departmentId` = ' $_SESSION[departmentId]' and tblstudent.StudentId =     ' $_SESSION[StudentId] ' and tbldepartment.departmentId = '$_SESSION[departmentId] '");
 
+                                        $sql = mysqli_query($con, "SELECT tblresult.`resultId`, tblcourse.`subjectTitle`,tbllevel.`levelName`, tblresult.`grade`, tblsemester.`grading` ,tbldepartment.`departmentName` FROM tblresult 
+INNER JOIN tblstudent ON tblstudent.`StudentId` = tblresult.`StudentId` 
+INNER JOIN tblcourse ON tblcourse.`subjectId` = tblresult.`subjectId` 
+INNER JOIN tbldepartment ON tbldepartment.`departmentId` = tblresult.`departmentId`
+INNER JOIN tbllevel ON tbllevel.`levelId` = tbldepartment.`levelId` 
+INNER JOIN tblsemester ON tblsemester.`grading_Id` = tblresult.`gradingId` WHERE tblstudent.`matricNo` =  '$_SESSION[matricNo]' ;
+ ");
                                         while ($row = mysqli_fetch_array($sql)) {
                                         ?>
                                             <tr>
-                                                <td><?php echo $row['subjectId']; ?></td>
+                                                <td><?php echo $row['resultId']; ?></td>
                                                 <td><?php echo $row['subjectTitle'] ?> </td>
 
                                                 <td>
@@ -277,15 +283,16 @@ $row = mysqli_fetch_array($query)
                                                     ?>
 
                                                 </td>
+                                                <td><?php echo $row['grade']; ?></td>
+                                                <td><?php echo $row['grading']; ?></td>
                                                 <td><?php echo $row['departmentName']; ?></td>
-
-                                                <td><a href="viewGradeResult.php?subjectId=<?php echo $row['subjectId']; ?>&semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                <!-- <td><a href="viewGradeResult.php?subjectId=<?php echo $row['subjectId']; ?>&semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
 
                                                 <td><a href="viewGradeResult.php?subjectId=<?php echo $row['subjectId']; ?>&semesterId=2&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
 
                                                 <td><a href="viewGradeResult.php?subjectId=<?php echo $row['subjectId']; ?>&semesterId=3&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
 
-                                                <td><a href="viewGradeResult.php?subjectId=<?php echo $row['subjectId']; ?>&semesterId=4&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                <td><a href="viewGradeResult.php?subjectId=<?php echo $row['subjectId']; ?>&semesterId=4&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td> -->
 
 
 
@@ -299,7 +306,6 @@ $row = mysqli_fetch_array($query)
                                 </table>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- /Widgets -->
@@ -324,30 +330,47 @@ $row = mysqli_fetch_array($query)
         </div>
         <!-- /#right-panel -->
 
-        <!-- Scripts -->
+        <script src="../assets/js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-        <script src="../assets/js/main.js"></script>
 
-        <!--  Chart js -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
+        <script src="../assets/js/lib/data-table/datatables.min.js"></script>
+        <script src="../assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+        <script src="../assets/js/lib/data-table/dataTables.buttons.min.js"></script>
+        <script src="../assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
+        <script src="../assets/js/lib/data-table/jszip.min.js"></script>
+        <script src="../assets/js/lib/data-table/vfs_fonts.js"></script>
+        <script src="../assets/js/lib/data-table/buttons.html5.min.js"></script>
+        <script src="../assets/js/lib/data-table/buttons.print.min.js"></script>
+        <script src="../assets/js/lib/data-table/buttons.colVis.min.js"></script>
+        <script src="../assets/js/init/datatables-init.js"></script>
 
-        <!--Chartist Chart-->
-        <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartist-plugin-legend@0.6.2/chartist-plugin-legend.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/flot-pie@1.0.0/src/jquery.flot.pie.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#bootstrap-data-table-export').DataTable();
 
-        <script src="https://cdn.jsdelivr.net/npm/simpleweather@3.1.0/jquery.simpleWeather.min.js"></script>
-        <script src="../assets/js/init/weather-init.js"></script>
+            });
 
-        <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
-        <script src="../assets/js/init/fullcalendar-init.js"></script>
+            // Menu Trigger
+            $('#menuToggle').on('click', function(event) {
+                var windowWidth = $(window).width();
+                if (windowWidth < 1010) {
+                    $('body').removeClass('open');
+                    if (windowWidth < 760) {
+                        $('#left-panel').slideToggle();
+                    } else {
+                        $('#left-panel').toggleClass('open-menu');
+                    }
+                } else {
+                    $('body').toggleClass('open');
+                    $('#left-panel').removeClass('open-menu');
+                }
+
+            });
+        </script>
 
         <!--Local Stuff-->
 

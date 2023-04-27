@@ -87,7 +87,7 @@ if (isset($_POST['login'])) {
                         <hr>
                         <div class="form-group">
                             <label>Matric Number</label>
-                            <input type="text" name="matricNo" Required class="form-control" placeholder="Matric Number">
+                            <input type="text" name="matricNo" Required class="form-control" placeholder="Pupil ID Number">
                         </div>
                         <div class="form-group">
                             <label>Password</label>

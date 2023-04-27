@@ -26,24 +26,14 @@ if ($row['adminTypeId'] === 1) {
 
                 <?php if ($_SESSION['adminTypeId'] == 2) { ?>
 
-                    <li class="menu-title">Quizzes Tab ↓↓↓</li>
-                    <li class="menu-item-has-children dropdown <?php if ($page == 'student') {
-                                                                    echo 'active';
-                                                                } ?>">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Quizzes</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-plus"></i> <a href="addquiz.php">Add New Quiz</a></li>
-                            <li><i class="fa fa-plus"></i> <a href="addQuizResult.php">Add Quiz Result</a></li>
-                            <li><i class="fa fa-eye"></i> <a href="viewQuiz.php">Show Quiz</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-title">Pupils Tab ↓↓↓</li>
+
+
                     <li class="menu-item-has-children dropdown <?php if ($page == 'student') {
                                                                     echo 'active';
                                                                 } ?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Pupils</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <!-- <li><i class="fa fa-plus"></i> <a href="createStudent.php">Add New Pupil</a></li> -->
+                            <li><i class="fa fa-plus"></i> <a href="createStudent.php">Add New Pupil</a></li>
                             <li><i class="fa fa-eye"></i> <a href="viewStudent.php">Show Pupils</a></li>
                         </ul>
                     </li>
@@ -58,7 +48,7 @@ if ($row['adminTypeId'] === 1) {
                             <li><i class="fa fa-eye"></i> <a href="viewCourses.php">Show Subjects</a></li>
                         </ul>
                     </li>
-                    <li class="menu-title">Grading Repors Tab ↓↓↓</li>
+
                     <li class="menu-item-has-children dropdown <?php if ($page == 'result') {
                                                                     echo 'active';
                                                                 } ?>">
@@ -76,7 +66,7 @@ if ($row['adminTypeId'] === 1) {
                         </ul>
                     </li>
 
-                    <li class="menu-title">Accounts Tab ↓↓↓</li>
+
                     <li class="menu-item-has-children dropdown <?php if ($page == 'profile') {
                                                                     echo 'active';
                                                                 } ?>">
@@ -118,7 +108,7 @@ if ($row['adminTypeId'] === 1) {
                             <li><i class="fa fa-eye"></i> <a href="viewDepartment.php">View Section</a></li>
                         </ul>
                     </li>
-                    <li class="menu-title">Quizzes Tab ↓↓↓</li>
+                    <!-- <li class="menu-title">Quizzes Tab ↓↓↓</li>
                     <li class="menu-item-has-children dropdown <?php if ($page == 'student') {
                                                                     echo 'active';
                                                                 } ?>">
@@ -127,17 +117,21 @@ if ($row['adminTypeId'] === 1) {
 
                             <li><i class="fa fa-eye"></i> <a href="viewQuiz.php">Show Quiz</a></li>
                         </ul>
-                    </li>
-                    <li class="menu-title">Pupils Tab ↓↓↓</li>
-                    <li class="menu-item-has-children dropdown <?php if ($page == 'student') {
-                                                                    echo 'active';
-                                                                } ?>">
+                    </li> -->
+                    <!-- <li class="menu-title">Pupils Tab ↓↓↓</li> -->
+
+
+                    <!-- <li class="menu-item-has-children dropdown <?php if ($page == 'student') {
+                                                                        echo 'active';
+                                                                    } ?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Pupils</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-plus"></i> <a href="createStudent.php">Add New Pupil</a></li>
                             <li><i class="fa fa-eye"></i> <a href="viewStudent.php">Show Pupils</a></li>
                         </ul>
-                    </li>
+                    </li> -->
+
+                    
                     <li class="menu-item-has-children dropdown <?php if ($page == 'courses') {
                                                                     echo 'active';
                                                                 } ?>">
@@ -147,7 +141,7 @@ if ($row['adminTypeId'] === 1) {
                             <li><i class="fa fa-eye"></i> <a href="viewCourses.php">Show Subjects</a></li>
                         </ul>
                     </li>
-                    <li class="menu-title">Grading Repors Tab ↓↓↓</li>
+                    <!-- <li class="menu-title">Grading Repors Tab ↓↓↓</li> -->
                     <li class="menu-item-has-children dropdown <?php if ($page == 'result') {
                                                                     echo 'active';
                                                                 } ?>">
@@ -165,7 +159,7 @@ if ($row['adminTypeId'] === 1) {
                         </ul>
                     </li>
 
-                    <li class="menu-title">Accounts Tab ↓↓↓</li>
+                    <!-- <li class="menu-title">Accounts Tab ↓↓↓</li> -->
                     <li class="menu-item-has-children dropdown <?php if ($page == 'profile') {
                                                                     echo 'active';
                                                                 } ?>">

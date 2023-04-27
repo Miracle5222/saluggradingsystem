@@ -91,8 +91,20 @@ error_reporting(0);
 
                         if (isset($_POST['submit'])) {
 
+
+                            if ($_FILES['profile']['name'] == "") {
+                                $file_name = $rrow['profile'];
+                            } else {
+                                $file_name = $_FILES['profile']['name'];
+                            }
+
+                            $file_tmp = $_FILES['profile']['tmp_name'];
+
+                            move_uploaded_file($file_tmp, "../img/" . $file_name);
+
                             $alertStyle = "";
                             $statusMsg = "";
+
 
                             $firstname = $_POST['firstname'];
                             $lastname = $_POST['lastname'];
@@ -102,8 +114,8 @@ error_reporting(0);
                             $password = $_POST['password'];
 
 
-                            $ret = mysqli_query($con, "update tblstaff set firstName='$firstname', lastName='$lastname',  
-  emailAddress='$emailAddress', phoneNo='$phoneNo', password = '$password' where staffId='$staffId'");
+                            $ret = mysqli_query($con, "update tbladmin set firstName='$firstname', profile= '$file_name', lastName='$lastname',  
+      emailAddress='$emailAddress', phoneNo='$phoneNo', password = '$password' where staffId='$staffId'");
 
                             if ($ret == TRUE) {
                                 $_SESSION['departmentId'] =  $department;
@@ -125,7 +137,7 @@ error_reporting(0);
 
                             $alertStyle = "";
                             $statusMsg = "";
-
+                            $profile = $_POST['profile'];
                             $firstname = $_POST['firstname'];
                             $lastname = $_POST['lastname'];
 
@@ -157,6 +169,9 @@ error_reporting(0);
                                 <strong class="card-title">Update Profile Information</strong>
                             </div>
                             <div class="card-body">
+                                <div style="margin-left:25px; ">
+                                    <img src="<?= "../img/$rrow[profile]" ?>" style="height: 150px; width:auto;" alt="">
+                                </div>
                                 <!-- Credit Card -->
                                 <div id="pay-invoice">
                                     <div class="card-body">
@@ -206,7 +221,12 @@ error_reporting(0);
                                                         </div>
                                                     </div>
 
-
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="password" class="control-label mb-1">Profile</label>
+                                                            <input id="profile" name="profile" type="file" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <?php
                                                 if ($_SESSION['adminTypeId'] == 1) { ?>

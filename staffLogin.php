@@ -5,7 +5,7 @@ include('includes/dbconnection.php');
 
 if (isset($_POST['login'])) {
     $uname = $_POST['uname'];
-    $password = md5($_POST['password']);
+    $password = $_POST['password'];
     $query = mysqli_query($con, "select * from tblstaff where staffId='$uname' && password='$password'");
     $count = mysqli_num_rows($query);
     $row = mysqli_fetch_array($query);
