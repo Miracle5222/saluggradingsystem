@@ -131,7 +131,7 @@ if ($row['adminTypeId'] === 1) {
                         </ul>
                     </li> -->
 
-                    
+
                     <li class="menu-item-has-children dropdown <?php if ($page == 'courses') {
                                                                     echo 'active';
                                                                 } ?>">
@@ -147,11 +147,11 @@ if ($row['adminTypeId'] === 1) {
                                                                 } ?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file"></i>Grades</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-plus"></i> <a href="<?php if ($_SESSION['adminTypeId'] == 2) {
-                                                                        echo "studentList.php";
-                                                                    } else {
-                                                                        echo "studentList.php";
-                                                                    } ?>">Submit Grades</a></li>
+                            <!-- <li><i class="fa fa-plus"></i> <a href="<?php if ($_SESSION['adminTypeId'] == 2) {
+                                                                                echo "studentList.php";
+                                                                            } else {
+                                                                                echo "studentList.php";
+                                                                            } ?>">Submit Grades</a></li> -->
                             <li><i class="fa fa-plus"></i> <a href="studentList3.php">View Grades</a></li>
 
                             <li><i class="fa fa-plus"></i> <a href="studentList4.php">View Final Grades</a></li>

@@ -96,7 +96,7 @@ include('../includes/dataValues.php');
                 <!-- Widgets  -->
                 <div class="row">
 
-                    <div class="col-lg-12">
+                    <!-- <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
                                 <h3 align="center"><b>
@@ -105,7 +105,7 @@ include('../includes/dataValues.php');
                             </div>
 
                         </div>
-                    </div><!-- /# column -->
+                    </div>/# column -->
 
 
 

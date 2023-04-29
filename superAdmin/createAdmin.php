@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $emailAddress = $_POST['emailAddress'];
-    $pass = md5('staff');
+    $pass = 'staff';
     $phoneNo = $_POST['phoneNo'];
     $staffId = $_POST['staffId'];
     $dateCreated = date("Y-m-d");

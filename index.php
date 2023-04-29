@@ -41,8 +41,6 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
-
-   
   </style>
 </head>
 
@@ -76,15 +74,17 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <div class="bg">
-    <section id="hero" class="d-flex justify-content-center align-items-center " style="background-image: url('img/sd.jpg');background-position:top;background-repeat:no-repeat;background-size:cover;">
+  <div class="container">
+    <div class="bg">
+      <section id="hero" class="d-flex justify-content-center align-items-center " style="background-image: url('img/sd.jpg');background-position:top;background-repeat:no-repeat;background-size:cover;">
 
-      <div class="container position-relative " data-aos="zoom-in" data-aos-delay="100">
-        <h1 class="landing">Online Grade Recording System of Salug Daku Elementary<br></h1>
+        <div class="container position-relative " data-aos="zoom-in" data-aos-delay="100">
+          <h1 class="landing">Online Grade Recording System of Salug Daku Elementary<br></h1>
 
-      </div>
+        </div>
 
-    </section><!-- End Hero -->
+      </section><!-- End Hero -->
+    </div>
   </div>
   <main id="main">
 
@@ -100,7 +100,7 @@
 
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
-          &copy; <strong><span>Grade Recording System of Salug Daku Elementary</span></strong> - <?php echo date('Y'); ?>
+          &copy; <strong><span>Online Grade Recording System of Salug Daku Elementary</span></strong> - <?php echo date('Y'); ?>
           <div class="credits">
           </div>
         </div>
