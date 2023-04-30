@@ -106,7 +106,7 @@ include('../includes/session.php');
                                             <th>Grade</th>
                                             <th>EmailAddress</th>
                                             <th>Contact</th>
-                                          
+
 
                                             <th>Section</th>
                                             <th>Delete</th>
@@ -130,7 +130,7 @@ include('../includes/session.php');
                                                 <td><?php echo $row['levelName']; ?></td>
                                                 <td><?php echo $row['emailAddress']; ?></td>
                                                 <td><?php echo $row['phoneNo']; ?></td>
-                                           
+
 
                                                 <td><?php echo $row['departmentName']; ?></td>
                                                 <td><a href="editAdmin.php?editid=<?php echo $row['staffId']; ?>" title="View Admin"><i class="fa fa-edit fa-1x"></i></a>

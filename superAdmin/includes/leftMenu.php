@@ -4,7 +4,7 @@ $query = mysqli_query($con, "select * from tbladmin where staffId='$staffId'");
 $row = mysqli_fetch_array($query);
 
 
-if ($row['adminTypeId'] === 1) {
+if ($_SESSION['adminTypeId'] === 1) {
 
     $staffFullName = $row['firstName'] . ' ' . $row['lastName'];
 } else {
@@ -15,7 +15,7 @@ if ($row['adminTypeId'] === 1) {
     INNER JOIN tbllevel ON tbllevel.`levelId` = tbldepartment.`levelId`
     INNER JOIN tblstaff ON tblstaff.`departmentId` = tbldepartment.`departmentId` WHERE tblstaff.`staffId`='$staffId'");
     $rrow = mysqli_fetch_array($dquery);
-    $_SESSION['departmentId'] = $rrow['departmentId'];
+    // $_SESSION['departmentId'] = $rrow['departmentId'];
     $_SESSION['departmentName'] = $rrow['departmentName'];
     $departmentName =
         $staffFullName = $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
