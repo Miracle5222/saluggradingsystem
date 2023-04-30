@@ -60,7 +60,7 @@
             <ul>
               <li><a href="adminLogin.php">Admin</a></li>
               <li><a href="studentLogin.php">Pupils</a></li>
-              <li><a href="staffLogin.php">Staff</a></li>
+              <li><a href="staffLogin.php">Teachers</a></li>
 
             </ul>
           </li>

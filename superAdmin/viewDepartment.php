@@ -102,7 +102,8 @@ include('../includes/session.php');
                                         <tr>
                                             <th>#</th>
                                             <!-- Log on to codeastro.com for more projects! -->
-                                            <th>Name</th>
+                                            <th>Teacher Name</th>
+                                            <th>Section Name</th>
                                             <th>Grade</th>
                                             <th>Created</th>
                                             <th>Actions</th>
@@ -111,12 +112,17 @@ include('../includes/session.php');
                                     <tbody>
 
                                         <?php
-                                        $ret = mysqli_query($con, "SELECT  tbldepartment.`dateCreated`, tbldepartment.`departmentName`, tbldepartment.`departmentId`,tbllevel.`levelName` FROM tbldepartment INNER JOIN tbllevel ON tbllevel.`levelId` = tbldepartment.`levelId`");
+                                        $ret = mysqli_query($con, "SELECT  tblstaff.`firstName`,tblstaff.`lastName`, tbldepartment.`dateCreated`, tbldepartment.`departmentName`, tbldepartment.`departmentId`,tbllevel.`levelName` 
+                                        FROM tbldepartment 
+                                        INNER JOIN tbllevel ON tbllevel.`levelId` = tbldepartment.`levelId`
+                                        INNER JOIN tblstaff ON tblstaff.`departmentId` = tbldepartment.`departmentId`");
 
                                         while ($row = mysqli_fetch_array($ret)) {
                                         ?>
                                             <tr>
+
                                                 <td><?php echo $row['departmentId']; ?></td>
+                                                <td><?php echo $row['firstName'] . " " . $row['lastName']; ?></td>
                                                 <td><?php echo $row['departmentName']; ?></td>
                                                 <td><?php echo $row['levelName']; ?></td>
                                                 <td><?php echo $row['dateCreated']; ?></td>

@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
     if ($ret == TRUE) {
 
         $alertStyle = "alert alert-success";
-        $statusMsg = "An Error Occurred!";
+        $statusMsg = "Update Success";
     } else {
 
         $alertStyle = "alert alert-danger";

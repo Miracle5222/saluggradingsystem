@@ -64,7 +64,7 @@ if (isset($_POST['login'])) {
                         <h3><strong class="text-success">Hi, Please Login</strong></h3>
                         <hr>
                         <div class="form-group">
-                            <label>Staff_ID</label>
+                            <label>Teacher ID</label>
                             <input type="text" name="uname" Required class="form-control" placeholder="ID Number">
                         </div>
                         <div class="form-group">

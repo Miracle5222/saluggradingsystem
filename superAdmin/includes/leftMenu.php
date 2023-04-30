@@ -9,7 +9,16 @@ if ($row['adminTypeId'] === 1) {
     $staffFullName = $row['firstName'] . ' ' . $row['lastName'];
 } else {
 
-    $staffFullName = $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
+
+    $dquery = mysqli_query($con, "SELECT tbldepartment.`departmentName`,tbldepartment.`departmentId`
+    FROM tbldepartment 
+    INNER JOIN tbllevel ON tbllevel.`levelId` = tbldepartment.`levelId`
+    INNER JOIN tblstaff ON tblstaff.`departmentId` = tbldepartment.`departmentId` WHERE tblstaff.`staffId`='$staffId'");
+    $rrow = mysqli_fetch_array($dquery);
+    $_SESSION['departmentId'] = $rrow['departmentId'];
+    $_SESSION['departmentName'] = $rrow['departmentName'];
+    $departmentName =
+        $staffFullName = $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
     // $staffRoom = $_SESSION['departmentId'];
 }
 ?>
@@ -17,7 +26,7 @@ if ($row['adminTypeId'] === 1) {
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="menu-title"><b class="text-danger">&nbsp;&nbsp;&nbsp;<?php echo $staffFullName; ?></b></li>
+                <li class="menu-title"><b class="text-danger">&nbsp;&nbsp;&nbsp;<?php echo $staffFullName ?></b></li>
                 <li class="<?php if ($page == 'dashboard') {
                                 echo 'active';
                             } ?>">
@@ -82,9 +91,9 @@ if ($row['adminTypeId'] === 1) {
 
                 <?php } else { ?>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Staff</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Teachers</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-plus"></i><a href="createAdmin.php">Add Staff</a></li>
+                            <li><i class="fa fa-plus"></i><a href="createAdmin.php">Add Teacher</a></li>
                             <li><i class="fa fa-eye"></i><a href="viewAdmin.php">View List</a></li>
                         </ul>
                     </li>

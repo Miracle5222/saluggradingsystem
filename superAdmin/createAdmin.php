@@ -174,7 +174,7 @@ if (isset($_POST['submit'])) {
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">
-                                    <h2 align="left" class="text-success">ADD USER</h2>
+                                    <h2 align="left" class="text-success">Add Teacher</h2>
                                 </strong>
                             </div>
                             <div class="card-body">
@@ -205,12 +205,12 @@ if (isset($_POST['submit'])) {
                                                     <br>
                                                     <div class="form-group">
                                                         <label for="cc-exp" class="control-label mb-1">Phone Number<i class="text-danger">*</i></label>
-                                                        <input id="" name="phoneNo" type="text" class="form-control cc-exp" value="" Required data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="Phone Number" required>
+                                                        <input id="" name="phoneNo" type="text" class="form-control cc-exp" value="" data-val="true" placeholder="Phone Number">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="x_card_code" class="control-label mb-1">Email Address<i class="text-danger">*</i></label>
-                                                        <input id="" name="emailAddress" type="email" class="form-control cc-cvc" value="" Required data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" placeholder="Email Address">
+                                                        <input id="" name="emailAddress" type="email" class="form-control cc-cvc" value="" data-val="true" placeholder="Email Address">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cc-exp" class="control-label mb-1">Section<i class="text-danger">*</i></label>

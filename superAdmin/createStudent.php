@@ -161,13 +161,31 @@ error_reporting(0);
                         $firstname = $_POST['firstname'];
                         $lastname = $_POST['lastname'];
                         $othername = $_POST['othername'];
-                        $matricNo = $_POST['matricNo'];
                         $departmentId = $_POST['departmentId'];
+                        $matricNo = $_POST['matricNo'];
+
+
                         $dateCreated = date("Y-m-d");
                         $contactNum = $_POST['contactNum'];
                         $password = "test";
 
 
+                        // echo   $firstname;
+                        // echo "<br>";
+                        // echo   $lastname;
+                        // echo "<br>";
+                        // echo   $othername;
+                        // echo "<br>";
+                        // echo   $departmentId;
+                        // echo "<br>";
+                        // echo   $matricNo;
+                        // echo "<br>";
+
+                        // echo   $dateCreated;
+                        // echo "<br>";
+                        // echo   $contactNum;
+                        // echo "<br>";
+                        // echo   $password;
 
                         $query = mysqli_query($con, "select * from tblstudent where matricno ='$matricNo'");
                         $ret = mysqli_fetch_array($query);
@@ -180,7 +198,7 @@ error_reporting(0);
 
                             // $query = mysqli_query($con, "insert into tblstudent(firstName,lastName,otherName,matricNo,password,departmentId,schoolyear,contactNumber)
                             //         value('$firstname','$lastname','$othername','$matricNo','$departmentId','$dateCreated','$contactNum','$password')");
-                            $insertStu = "insert into tblstudent(firstName,lastName,otherName,matricNo,PASSWORD,schoolyear,contactNumber,departmentId)
+                            $insertStu = "insert into tblstudent(firstName,lastName,otherName,matricNo,password,schoolyear,contactNumber,departmentId)
                         value('$firstname','$lastname','$othername','$matricNo','$password','$dateCreated','$contactNum','$departmentId')";
                             $insertRes = $con->query($insertStu);
 
@@ -202,7 +220,8 @@ error_reporting(0);
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">
-                                    <h2 align="center">Input Details</h2>
+                                    <h1 align="center">Section: <span class="text-info"><?= $_SESSION['departmentName'] ?></span></h1>
+                                    <h2 align="center">Pupils Details</h2>
                                 </strong>
                             </div>
                             <div class="card-body">
@@ -216,13 +235,13 @@ error_reporting(0);
                                                     <div class="form-group">
                                                         <!-- Log on to codeastro.com for more projects! -->
                                                         <label for="cc-exp" class="control-label mb-1">First name<i class="text-danger">*</i></label>
-                                                        <input id="" name="firstname" type="text" class="form-control cc-exp" value="" Required data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="Firstname" autofocus>
+                                                        <input id="" name="firstname" type="text" class="form-control cc-exp" value="" placeholder="Firstname" autofocus>
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <!-- Log on to codeastro.com for more projects! -->
                                                     <label for="x_card_code" class="control-label mb-1">Last name<i class="text-danger">*</i></label>
-                                                    <input id="" name="lastname" type="text" class="form-control cc-cvc" value="" Required data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" placeholder="Lastname">
+                                                    <input id="" name="lastname" type="text" class="form-control cc-cvc" value="" placeholder="Lastname">
                                                 </div>
                                             </div>
                                             <div>
@@ -232,7 +251,7 @@ error_reporting(0);
                                                         <div class="form-group">
                                                             <!-- Log on to codeastro.com for more projects! -->
                                                             <label for="cc-exp" class="control-label mb-1">Nickname <small><i class="text-danger">Optional</i></small></label>
-                                                            <input id="" name="othername" type="text" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="Nickname">
+                                                            <input id="" name="othername" type="text" class="form-control cc-exp" value="" placeholder="Nickname">
                                                         </div>
                                                     </div>
 
@@ -240,17 +259,18 @@ error_reporting(0);
 
                                                         <div class="form-group">
                                                             <label for="cc-exp" class="control-label mb-1">Section<i class="text-danger">*</i></label>
-                                                            <?php
-                                                            $query = mysqli_query($con, "select * from tbldepartment ORDER BY departmentName ASC");
-                                                            $count = mysqli_num_rows($query);
-                                                            if ($count > 0) {
-                                                                echo ' <select required name="departmentId" onchange="showValues2(this.value)" class="custom-select form-control">';
-                                                                while ($row = mysqli_fetch_array($query)) {
-                                                                    echo '<option value="' . $row['departmentId'] . '" >' . $row['departmentName'] . '</option>';
-                                                                }
-                                                                echo '</select>';
-                                                            }
-                                                            ?>
+                                                            <input type="text" value="<?= $_SESSION['departmentId'] ?>" name="departmentId" class="form-control cc-exp" />
+                                                            <!-- <?php
+                                                                    $query = mysqli_query($con, "select * from tbldepartment ORDER BY departmentName ASC");
+                                                                    $count = mysqli_num_rows($query);
+                                                                    if ($count > 0) {
+                                                                        echo ' <select required name="departmentId" onchange="showValues2(this.value)" class="custom-select form-control">';
+                                                                        while ($row = mysqli_fetch_array($query)) {
+                                                                            echo '<option value="' . $row['departmentId'] . '" >' . $row['departmentName'] . '</option>';
+                                                                        }
+                                                                        echo '</select>';
+                                                                    }
+                                                                    ?> -->
                                                         </div>
 
 
@@ -259,8 +279,8 @@ error_reporting(0);
 
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="cc-exp" class="control-label mb-1">Contact Number <small><i class="text-danger">This will be the user ID</i></small></label>
-                                                            <input id="" name="contactNum" type="text" class="form-control cc-exp" value="" Required data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="09554688799" required>
+                                                            <label for="cc-exp" class="control-label mb-1">Contact Number </label>
+                                                            <input id="" name="contactNum" type="text" class="form-control cc-exp" value="" placeholder="09554688799">
                                                         </div>
                                                     </div>
 
