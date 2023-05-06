@@ -211,7 +211,7 @@ if (isset($_GET['matricNo']) && isset($_GET['departmentId']) && isset($_GET['sem
                                             FROM tblstudent 
                                             INNER JOIN tbldepartment ON tbldepartment.`departmentId` = tblstudent.`departmentId` 
                                             INNER JOIN tbllevel ON tbllevel.`levelId` = tbldepartment.`levelId` 
-                                            INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` where tblstudent.matricNo = '$matricNo'");
+                                            INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` where tblstudent.matricNo = '$matricNo' and tbldepartment.departmentId = ' $departmentId' ");
 
 
                                                 while ($row = mysqli_fetch_array($ret)) {

@@ -69,7 +69,7 @@ if ($_SESSION['adminTypeId'] === 1) {
                                                                         echo "studentList.php";
                                                                     } ?>">Submit Grades</a></li>
                             <li><i class="fa fa-plus"></i> <a href="studentList3.php">View Grades</a></li>
-                            <li><i class="fa fa-plus"></i> <a href="studentList4.php">View Final Grades</a></li>
+                            <!-- <li><i class="fa fa-plus"></i> <a href="studentList4.php">View Final Grades</a></li> -->
 
 
                         </ul>
@@ -163,7 +163,7 @@ if ($_SESSION['adminTypeId'] === 1) {
                                                                             } ?>">Submit Grades</a></li> -->
                             <li><i class="fa fa-plus"></i> <a href="studentList3.php">View Grades</a></li>
 
-                            <li><i class="fa fa-plus"></i> <a href="studentList4.php">View Final Grades</a></li>
+                            <!-- <li><i class="fa fa-plus"></i> <a href="studentList4.php">View Final Grades</a></li> -->
 
                         </ul>
                     </li>

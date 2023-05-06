@@ -109,7 +109,7 @@ include('../includes/session.php');
 
 
                                             <th>Section</th>
-                                            <th>Delete</th>
+                                            <th>Edit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
