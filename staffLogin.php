@@ -73,7 +73,10 @@ if (isset($_POST['login'])) {
                         </div>
                         <div class="checkbox">
                             <label class="pull-left">
-                                <small><a class="text-success" href="index.php">Go to main page</a></small>
+                                <small><a class="btn btn-outline-success" href="index.php">Go Back</a></small>
+                            </label>
+                            <label class="pull-right">
+                                <small><a class="btn btn-outline-info" href="staffForgotpassword.php">Forgot Password?</a></small>
                             </label>
                         </div>
                         <br><!-- Log on to codeastro.com for more projects! -->

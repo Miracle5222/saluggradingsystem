@@ -117,7 +117,7 @@ error_reporting(0);
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#">Administrator</a></li>
-                                    <li class="active">Edit Administrator</li>
+                                    <li class="active">Edit Teacher</li>
                                 </ol>
                             </div>
                         </div>
@@ -181,7 +181,7 @@ error_reporting(0);
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">
-                                    <h2 align="center">Edit Administrator Details</h2>
+                                    <h2 align="center">Edit Teacher Details</h2>
                                 </strong>
                             </div>
                             <div class="card-body">
@@ -224,7 +224,7 @@ error_reporting(0);
 
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="x_card_code" class="control-label mb-1">Staff ID</label>
+                                                            <label for="x_card_code" class="control-label mb-1">Teacher ID</label>
                                                             <input id="" name="staffId" type="text" class="form-control cc-cvc" value="<?php echo $rowi['staffId'] ?>" data-val="true" Required data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" placeholder="StaffID">
                                                         </div>
                                                     </div>

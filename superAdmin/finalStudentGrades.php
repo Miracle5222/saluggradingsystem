@@ -163,63 +163,88 @@ if (isset($_GET['StudentId']) && isset($_GET['departmentId']) && isset($_GET['su
                                                             $length = mysqli_query($con, "SELECT  COUNT(tblresult.subjectId) AS totalSubject FROM tblresult INNER JOIN tblcourse ON tblcourse.`subjectId` = tblresult.`subjectId` WHERE tblresult.StudentId =   '$_GET[StudentId]' AND tblresult.departmentId = '$_GET[departmentId]'  GROUP BY tblresult.gradingId");
                                                             $finalGradelength = mysqli_fetch_array($length);
 
+                                                            // total number of subjects
+                                                            // print_r($finalGradelength);
+
                                                             $finalTotalAverage = 0.0;
                                                             $sql = mysqli_query($con, "SELECT tblcourse.`subjectId`, tblcourse.`subjectTitle`, ROUND(AVG(tblresult.grade),1) AS average , COUNT(tblresult.gradingId) AS grades FROM tblresult INNER JOIN tblcourse ON tblcourse.`subjectId` = tblresult.`subjectId` WHERE tblresult.StudentId =  '$_GET[StudentId]' AND tblresult.departmentId =  '$_GET[departmentId]' GROUP BY tblresult.subjectId");
                                                             while ($finalGrade = mysqli_fetch_array($sql)) {
                                                                 $_SESSION['finalGrade'] =  $finalGrade['grades'];
                                                                 $finalTotalAverage += $finalGrade['average'];
 
-                                                                if ($finalGradelength['totalSubject'] ==  $finalGrade['grades']) {
+                                                                // check if the grading is not empty from  1 - 4
+                                                                // print_r($finalGrade['grades']);
+
+                                                                if ($finalGrade['grades'] == 4) {
+                                                                    if ($finalGradelength['totalSubject'] ==  $finalGrade['grades']) {
                                                             ?>
-                                                                    <tr>
+                                                                        <tr>
 
-                                                                        <td> <?= $finalGrade['subjectId'] ?></td>
-                                                                        <td> <?= $finalGrade['subjectTitle'] ?></td>
-                                                                        <td> <?= $finalGrade['average'] ?></td>
+                                                                            <td> <?= $finalGrade['subjectId'] ?></td>
+                                                                            <td> <?= $finalGrade['subjectTitle'] ?></td>
+                                                                            <td> <?= $finalGrade['average'] ?></td>
+                                                                            <?php
+                                                                            if (isset($finalGrade['average'])) {
+                                                                                if ($finalGrade['average'] > 75) {    ?>
+                                                                                    <td class="text-success">Passed</td>
+
+                                                                                <?php    } else { ?>
+
+                                                                                    <td class="text-danger">Failed</td>
+                                                                            <?php      }
+                                                                            } ?>
                                                                         <?php
-                                                                        if (isset($finalGrade['average'])) {
-                                                                            if ($finalGrade['average'] > 75) {    ?>
-                                                                                <td class="text-success">Passed</td>
+                                                                    } else { ?>
 
-                                                                            <?php    } else { ?>
+                                                                        <tr>
 
-                                                                                <td class="text-danger">Failed</td>
-                                                                        <?php      }
-                                                                        } ?>
+                                                                            <td> <?= $finalGrade['subjectId'] ?></td>
+                                                                            <td> <?= $finalGrade['subjectTitle'] ?></td>
+                                                                            <td> <?= $finalGrade['average'] ?></td>
+                                                                            <?php
+                                                                            if (isset($finalGrade['average'])) {
+                                                                                if ($finalGrade['average'] > 75) {    ?>
+                                                                                    <td class="text-success">Passed</td>
+
+                                                                                <?php    } else { ?>
+
+                                                                                    <td class="text-danger">Failed</td>
+                                                                                <?php      }
+                                                                            } else { ?>
+                                                                                <td>Pending</td>
+                                                                            <?php   } ?>
+                                                                        <?php
+                                                                    }
+
+
+                                                                        ?>
+
+
+
+
+
+
+
+
+                                                                        </tr>
+
                                                                     <?php
                                                                 } else { ?>
+                                                                        <tr>
 
-                                                                    <tr>
+                                                                            <td> <?= $finalGrade['subjectId'] ?></td>
+                                                                            <td> <?= $finalGrade['subjectTitle'] ?></td>
+                                                                            <td> <?= $finalGrade['average'] ?></td>
 
-                                                                        <td> <?= $finalGrade['subjectId'] ?></td>
-                                                                        <td> <?= $finalGrade['subjectTitle'] ?></td>
-                                                                        <td> <?= $finalGrade['average'] ?></td>
-                                                                        <?php
-                                                                        if (isset($finalGrade['average'])) {
-                                                                            if ($finalGrade['average'] > 75) {    ?>
-                                                                                <td class="text-success">Passed</td>
 
-                                                                            <?php    } else { ?>
-
-                                                                                <td class="text-danger">Failed</td>
-                                                                            <?php      }
-                                                                        } else { ?>
-                                                                            <td>Pending</td>
-                                                                        <?php   } ?>
-                                                                    <?php
-                                                                }
-
-                                                                    ?>
+                                                                            <td class="text-warning text-danger">Incomplete</td>
 
 
 
+                                                                        </tr>
 
 
-
-
-
-                                                                    </tr>
-                                                                <?php
+                                                                <?php  }
                                                             }
 
                                                                 ?>
@@ -278,7 +303,7 @@ if (isset($_GET['StudentId']) && isset($_GET['departmentId']) && isset($_GET['su
                                                                                     <?php
 
                                                                                     if ($finalTotalAverage == "") { ?>
-                                                                                        <td>Incomplete Grades</td>
+                                                                                        <td>No Grades</td>
                                                                                     <?php } else {    ?>
                                                                                         <td><?= round($finalTotalAverage /  $finalGradelength['totalSubject'], 2) ?></td>
                                                                                     <?php    }
@@ -286,18 +311,34 @@ if (isset($_GET['StudentId']) && isset($_GET['departmentId']) && isset($_GET['su
                                                                                     ?>
                                                                                     <?php
                                                                                     if ($finalTotalAverage == "") { ?>
-                                                                                        <td class="text-warning">Pending</td>
-                                                                                    <?php } else {    ?>
-                                                                                        <?php if (round($finalTotalAverage /  $finalGradelength['totalSubject'], 2) > 75) {    ?>
-                                                                                            <td class="text-success">Passed</td>
+                                                                                        <td></td>
+                                                                                        <?php
+                                                                                    } else {
+                                                                                        if ($finalGrade['grades'] == 4) {
+                                                                                            if (round($finalTotalAverage /  $finalGradelength['totalSubject'], 2) > 75) {    ?>
+                                                                                                <td class="text-success">Passed</td>
 
-                                                                                        <?php    } else { ?>
+                                                                                            <?php    } else { ?>
 
-                                                                                            <td class="text-danger">Failed</td>
-                                                                                        <?php      } ?>
+                                                                                                <td class="text-danger">Failed</td>
+                                                                                            <?php      } ?>
+                                                                                            <?php
+                                                                                        } else {
+                                                                                            if (round($finalTotalAverage /  $finalGradelength['totalSubject'], 2) > 75) {    ?>
+                                                                                                <td class="text-info">Incomplete</td>
+
+                                                                                            <?php    }  ?>
+
+
                                                                                     <?php    }
-
+                                                                                    }
                                                                                     ?>
+
+
+
+
+
+
 
 
                                                                                 </tr>

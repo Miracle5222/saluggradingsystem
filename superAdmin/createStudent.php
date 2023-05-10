@@ -161,7 +161,7 @@ error_reporting(0);
                         $firstname = $_POST['firstname'];
                         $lastname = $_POST['lastname'];
                         $othername = $_POST['othername'];
-                        $departmentId = $_POST['departmentId'];
+                        $departmentId = $_SESSION['departmentId'];
                         $matricNo = $_POST['matricNo'];
 
 
@@ -255,27 +255,17 @@ error_reporting(0);
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-6">
+                                                    <!-- <div class="col-6">
 
                                                         <div class="form-group">
                                                             <label for="cc-exp" class="control-label mb-1">Section<i class="text-danger">*</i></label>
                                                             <input type="text" value="<?= $_SESSION['departmentId'] ?>" name="departmentId" class="form-control cc-exp" />
-                                                            <!-- <?php
-                                                                    $query = mysqli_query($con, "select * from tbldepartment ORDER BY departmentName ASC");
-                                                                    $count = mysqli_num_rows($query);
-                                                                    if ($count > 0) {
-                                                                        echo ' <select required name="departmentId" onchange="showValues2(this.value)" class="custom-select form-control">';
-                                                                        while ($row = mysqli_fetch_array($query)) {
-                                                                            echo '<option value="' . $row['departmentId'] . '" >' . $row['departmentName'] . '</option>';
-                                                                        }
-                                                                        echo '</select>';
-                                                                    }
-                                                                    ?> -->
+
                                                         </div>
 
 
 
-                                                    </div>
+                                                    </div> -->
 
                                                     <div class="col-6">
                                                         <div class="form-group">
@@ -304,7 +294,20 @@ error_reporting(0);
 
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="cc-exp" class="control-label mb-1">ID No <small><i class="text-danger">This will be the user ID</i></small></label>
+                                                            <label for="cc-exp" class="control-label mb-1">ID No <small>
+                                                                    <?php
+                                                                    $query = mysqli_query($con, "select matricNo from tblstudent ORDER BY StudentId DESC LIMIT 1");
+                                                                    $count = mysqli_num_rows($query);
+                                                                    if ($count > 0) {
+
+                                                                        while ($row = mysqli_fetch_array($query)) { ?>
+                                                                            <i class="text-danger">The Pupil ID should be grater than this ID: <?= $row['matricNo'] ?></i></small>
+                                                        <?php  }
+                                                                    }
+                                                        ?>
+
+
+                                                            </label>
                                                             <input id="" name="matricNo" type="text" class="form-control cc-exp" value="" Required data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="ID Number" required>
                                                         </div>
                                                     </div>

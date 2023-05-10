@@ -165,7 +165,7 @@ tbllevel.`levelName`
 FROM tblstudent 
 INNER JOIN tbldepartment ON tbldepartment.`departmentId` = tblstudent.`departmentId` 
 INNER JOIN tbllevel ON tbllevel.`levelId` = tbldepartment.`levelId` 
-INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` group by tblstudent.`StudentId` ");
+INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` where tbldepartment.`departmentId` = '$_GET[departmentId]' group by tblstudent.`StudentId` ");
                                                             }
                                                             while ($row = mysqli_fetch_array($sql)) {
                                                             ?>
@@ -176,14 +176,70 @@ INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` 
                                                                     <td><?php echo $row['levelName']; ?></td>
                                                                     <td><?php echo $row['departmentName']; ?></td>
 
-                                                                    <td><a href="viewGradeResult.php?semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
 
-                                                                    <td><a href="viewGradeResult.php?semesterId=2&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                    <?php
+                                                                    $sqls = mysqli_query($con, "SELECT grade,StudentId FROM tblresult WHERE gradingId = 1 and StudentId = '$row[StudentId]' ");
+                                                                    $rows = mysqli_fetch_array($sqls);
+                                                                    if (strlen($rows['grade']) > 0) { ?>
+                                                                        <td><a href="viewGradeResult.php?semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                    <?php   } else { ?>
+                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
 
-                                                                    <td><a href="viewGradeResult.php?semesterId=3&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
 
-                                                                    <td><a href="viewGradeResult.php?semesterId=4&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
-                                                                    <td><a href="finalStudentGrades.php?subjectId=<?= $row['subjectId'] ?>&departmentId=<?php echo $row['departmentId']; ?>&StudentId=<?php echo $row['StudentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                    <?php
+                                                                    $sqls = mysqli_query($con, "SELECT grade,StudentId FROM tblresult WHERE gradingId = 2 and StudentId = '$row[StudentId]' ");
+                                                                    $rows = mysqli_fetch_array($sqls);
+                                                                    if (strlen($rows['grade']) > 0) { ?>
+                                                                        <td><a href="viewGradeResult.php?semesterId=2&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                    <?php   } else { ?>
+                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                    <?php
+                                                                    $sqls = mysqli_query($con, "SELECT grade,StudentId FROM tblresult WHERE gradingId = 3 and StudentId = '$row[StudentId]' ");
+                                                                    $rows = mysqli_fetch_array($sqls);
+                                                                    if (strlen($rows['grade']) > 0) { ?>
+                                                                        <td><a href="viewGradeResult.php?semesterId=3&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                    <?php   } else { ?>
+                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+
+                                                                    <?php
+                                                                    $sqls = mysqli_query($con, "SELECT grade,StudentId FROM tblresult WHERE gradingId = 4 and StudentId = '$row[StudentId]' ");
+                                                                    $rows = mysqli_fetch_array($sqls);
+                                                                    if (strlen($rows['grade']) > 0) { ?>
+                                                                        <td><a href="viewGradeResult.php?semesterId=4&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                    <?php   } else { ?>
+                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+
+                                                                    <?php
+                                                                    $sqls = mysqli_query($con, "SELECT grade,StudentId FROM tblresult WHERE gradingId = 4 and StudentId = '$row[StudentId]' ");
+                                                                    $rows = mysqli_fetch_array($sqls);
+                                                                    if (strlen($rows['grade']) > 0) { ?>
+                                                                        <td><a href="finalStudentGrades.php?subjectId=<?= $row['subjectId'] ?>&departmentId=<?php echo $row['departmentId']; ?>&StudentId=<?php echo $row['StudentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                    <?php   } else { ?>
+                                                                        <td><a class="text-danger" href="finalStudentGrades.php?subjectId=<?= $row['subjectId'] ?>&departmentId=<?php echo $row['departmentId']; ?>&StudentId=<?php echo $row['StudentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+
+
+
+
+
+
+
+
+
 
                                                                 </tr>
                                                             <?php

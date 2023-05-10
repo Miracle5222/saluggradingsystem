@@ -67,8 +67,8 @@ include('../includes/session.php');
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">Staff</a></li>
-                                    <li class="active">View Staff</li>
+                                    <li><a href="#">Administrator</a></li>
+                                    <li class="active">Edit Teacher</li>
                                 </ol>
                             </div>
                         </div>
@@ -92,7 +92,7 @@ include('../includes/session.php');
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">
-                                    <h2 align="center">List of all Staff</h2>
+                                    <h2 align="center">List of all Teacher</h2>
                                 </strong>
                             </div>
                             <div class="card-body">

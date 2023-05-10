@@ -4,35 +4,42 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 
-if (isset($_POST['login'])) {
+?>
+
+
+<!-- forgot password form validation -->
+
+<?php
+
+if (isset($_POST['submit'])) {
     $staffId = $_POST['staffId'];
-    $password = $_POST['password'];
-    $query = mysqli_query($con, "select * from tbladmin where  staffId='$staffId' && password='$password'");
+    $Currpassword = $_POST['Currpassword'];
+    $Newpassword = $_POST['Newpassword'];
+    $ConNewpassword = $_POST['ConNewpassword'];
+
+    $query = mysqli_query($con, "select * from tbladmin where  staffId='$staffId' && password='$Currpassword'");
     $count = mysqli_num_rows($query);
     $row = mysqli_fetch_array($query);
-
     if ($count > 0) {
-        $_SESSION['staffId'] = $row['staffId'];
-        $_SESSION['emailAddress'] = $row['emailAddress'];
-        $_SESSION['firstName'] = $row['firstName'];
-        $_SESSION['lastName'] = $row['lastName'];
-        $_SESSION['adminTypeId'] = $row['adminTypeId'];
+        if ($Newpassword != $ConNewpassword) {
+            $errorMsg = "<div class='alert alert-danger' role='alert'>Pasword Don't Matched</div>";
+        } else {
+            $query = mysqli_query($con, "select * from tbladmin where staffId='$staffId' and password='$Currpassword'");
+            $rows = mysqli_fetch_array($query);
+            if ($rows > 0) {
+                $ret = mysqli_query($con, "update tbladmin set password='$Newpassword' where staffId='$staffId'");
 
-        if ($_SESSION['adminTypeId'] == 1) // SuperAdministrator
-        {
-            echo "<script type = \"text/javascript\">
-                window.location = (\"superAdmin/index.php\")
-                </script>";
-        } else if ($_SESSION['adminTypeId'] == 2) // Administrator
-        {
-            echo "<script type = \"text/javascript\">
-                window.location = (\"staff/index.php\")
-                </script>";
+
+                $errorMsg = "<div class='alert alert-success' role='alert'>Updated successfully</div>";
+            } else {
+                $errorMsg = "<div class='alert alert-success' role='alert'>Failed to update password</div>";
+            }
         }
     } else {
-        $errorMsg = "<div class='alert alert-danger' role='alert'>Invalid Username/Password!</div>";
+        $errorMsg = "<div class='alert alert-danger' role='alert'>Wrong Id or Password</div>";
     }
 }
+
 ?>
 
 
@@ -74,67 +81,36 @@ if (isset($_POST['login'])) {
                     <form method="Post" Action="">
                         <?php echo $errorMsg; ?>
                         <strong>
-                            <h2 align="center">Administrator Login</h2>
+                            <h2 align="center">Forgot Password</h2>
                         </strong>
                         <hr>
                         <div class="form-group">
                             <label>User</label>
 
                             <input class="form-control" type="text" placeholder="staff_ID" name="staffId" required />
-                            <!-- <?php
-                                    $query = mysqli_query($con, "select * from tbladmin ");
-                                    $count = mysqli_num_rows($query);
-                                    if ($count > 0) {
-                                        echo ' <select required name="uname" class="custom-select form-control">';
-                                        echo '<option value="">Choose User</option>';
-                                        while ($row = mysqli_fetch_array($query)) {
 
-                                            $type = $row['otherName'];
-
-                                            echo '<option value="' . $row['staffId'] . '" >' . $row['staffId'] . '</option>';
-                                        }
-                                        echo '</select>';
-                                    }
-                                    ?> -->
-
-
-                            <!-- <?php
-                                    $query = mysqli_query($con, "select * from tbladmin ORDER BY firstName ASC");
-                                    $count = mysqli_num_rows($query);
-                                    if ($count > 0) {
-                                        echo '<select required name="othername" onchange="showValues(this.value)" class="custom-select form-control">';
-                                        echo '<option value="">-- Choose User --</option>';
-                                        while ($row = mysqli_fetch_array($query)) {
-
-                                            echo '<option value="' . $row['staffId'] . '">';
-
-                                            $id = $row['staffId'];
-                                            $name = $row['firstName'];
-                                            $type = $row['otherName'];
-
-                                            echo '[' . $type . '] ' . $name . ' ' . $row['lastName'];
-
-                                            echo '</option>';
-                                        }
-                                        echo '</select>';
-                                    }
-                                    ?>  -->
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" Required class="form-control" placeholder="Password">
+                            <label>Current Password</label>
+                            <input type="password" name="Currpassword" Required class="form-control" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" name="Newpassword" Required class="form-control" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm New Password</label>
+                            <input type="password" name="ConNewpassword" Required class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
                             <label class="pull-left">
-                                <a href="index.php">Go Back</a>
+                                <a href="adminLogin.php">Go Back</a>
                             </label>
-                            <label class="pull-right">
-                                <a href="./adminForgotPass.php">Forgot Password?</a>
-                            </label>
+
                         </div>
                         <br>
                         <!-- Log on to codeastro.com for more projects! -->
-                        <button type="submit" name="login" class="btn btn-success btn-flat m-b-30 m-t-30">Log in</button>
+                        <button type="submit" name="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Log in</button>
 
 
 

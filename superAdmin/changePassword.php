@@ -6,20 +6,49 @@ error_reporting(0);
 
 if (isset($_POST['submit'])) {
 
-    $cpassword = md5($_POST['currentpassword']);
-    $newpassword = md5($_POST['newpassword']);
+    if ($_SESSION['adminTypeId'] == 1) {
+        $cpassword = $_POST['currentpassword'];
+        $newpassword = $_POST['newpassword'];
+        $ConfirmNewpassword = $_POST['ConfirmNewpassword'];
 
-    $query = mysqli_query($con, "select * from tblstaff where staffId='$staffId' and password='$cpassword'");
-    $row = mysqli_fetch_array($query);
-    if ($row > 0) {
-        $ret = mysqli_query($con, "update tblstaff set password='$newpassword' where staffId='$staffId'");
+        if ($newpassword !=  $ConfirmNewpassword) {
+            $alertStyle = "alert alert-danger";
+            $statusMsg = "Password Not Matched";
+        } else {
+            $query = mysqli_query($con, "select * from tbladmin where staffId='$staffId' and password='$cpassword'");
+            $row = mysqli_fetch_array($query);
+            if ($row > 0) {
+                $ret = mysqli_query($con, "update tbladmin set password='$newpassword' where staffId='$staffId'");
 
-        $alertStyle = "alert alert-success";
-        $statusMsg = "Password changed successfully!";
+                $alertStyle = "alert alert-success";
+                $statusMsg = "Password changed successfully!";
+            } else {
+
+                $alertStyle = "alert alert-danger";
+                $statusMsg = "Your current password is wrong!";
+            }
+        }
     } else {
 
-        $alertStyle = "alert alert-danger";
-        $statusMsg = "Your current password is wrong!";
+        $cpassword = $_POST['currentpassword'];
+        $newpassword = $_POST['newpassword'];
+        $ConfirmNewpassword = $_POST['ConfirmNewpassword'];
+
+        if ($newpassword !=  $ConfirmNewpassword) {
+            $alertStyle = "alert alert-danger";
+            $statusMsg = "Password Not Matched";
+        } else {
+            $query = mysqli_query($con, "select * from tblstaff where staffId='$staffId' and password='$cpassword'");
+            $row = mysqli_fetch_array($query);
+            if ($row > 0) {
+                $ret = mysqli_query($con, "update tblstaff set password='$newpassword' where staffId='$staffId'");
+                $alertStyle = "alert alert-success";
+                $statusMsg = "Password changed successfully!";
+            } else {
+                $alertStyle = "alert alert-danger";
+                $statusMsg = "Your current password is wrong!";
+            }
+        }
     }
 }
 
@@ -135,6 +164,8 @@ if (isset($_POST['submit'])) {
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
+                                                            <label for="cc-exp" class="control-label mb-1">Confirm New Password</label>
+                                                            <input id="" name="ConfirmNewpassword" type="password" class="form-control cc-exp" value="" data-val="true" placeholder="New Password">
                                                         </div>
                                                     </div>
                                                 </div>
