@@ -235,8 +235,8 @@ error_reporting(0);
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label for="password" class="control-label mb-1">Department ID</label>
-                                                                <input id="text" name="department" type="text" class="form-control cc-cvc" value="<?php echo $rrow['departmentId']; ?>" Required data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" placeholder="Email Address">
+                                                                <label for="password" class="control-label mb-1">Advisory</label>
+                                                                <input id="text" name="department" type="text" class="form-control cc-cvc" value="<?php echo $rrow['departmentId']; ?>" Required placeholder="Grade 1 - Rose">
                                                             </div>
                                                         </div>
 

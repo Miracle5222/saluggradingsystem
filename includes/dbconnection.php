@@ -9,10 +9,7 @@ if (mysqli_connect_errno()) {
     echo "Connection Fail" . mysqli_connect_error();
 }
 
-// $con=mysqli_connect("localhost", "root", "codeastro.com", "amsys");
-// if(mysqli_connect_errno()){
-// echo "Connection Fail".mysqli_connect_error();
-// }
+
 
 ?>
 <!-- Log on to codeastro.com for more projects! -->
