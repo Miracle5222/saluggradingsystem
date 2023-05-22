@@ -224,8 +224,6 @@ if (isset($_GET['StudentId']) && isset($_GET['departmentId']) && isset($_GET['su
 
 
 
-
-
                                                                         </tr>
 
                                                                     <?php

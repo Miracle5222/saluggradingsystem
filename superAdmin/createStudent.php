@@ -187,6 +187,7 @@ error_reporting(0);
                         // echo "<br>";
                         // echo   $password;
 
+
                         $query = mysqli_query($con, "select * from tblstudent where matricno ='$matricNo'");
                         $ret = mysqli_fetch_array($query);
                         if ($ret > 0) {
@@ -194,22 +195,30 @@ error_reporting(0);
                             $alertStyle = "alert alert-danger";
                             $statusMsg = "User ID is already exist!";
                         } else {
+                            if (isset($_FILES['profile']['name'])) {
 
+                                $file_name = $_FILES['profile']['name'];
+
+
+                                $file_tmp = $_FILES['profile']['tmp_name'];
+                                move_uploaded_file($file_tmp, "../img" . $file_name);
+                                $insertStu = "insert into tblstudent(firstName,lastName,otherName,matricNo,password,schoolyear,contactNumber,departmentId,profile)
+                                value('$firstname','$lastname','$othername','$matricNo','$password','$dateCreated','$contactNum','$departmentId','$file_name')";
+                                $insertRes = $con->query($insertStu);
+
+                                if ($insertRes) {
+
+                                    $alertStyle = "alert alert-success";
+                                    $statusMsg = "Pupil Added Successfully!";
+                                } else {
+                                    $alertStyle = "alert alert-danger";
+                                    $statusMsg = "An error Occurred!";
+                                }
+                            }
 
                             // $query = mysqli_query($con, "insert into tblstudent(firstName,lastName,otherName,matricNo,password,departmentId,schoolyear,contactNumber)
                             //         value('$firstname','$lastname','$othername','$matricNo','$departmentId','$dateCreated','$contactNum','$password')");
-                            $insertStu = "insert into tblstudent(firstName,lastName,otherName,matricNo,password,schoolyear,contactNumber,departmentId)
-                        value('$firstname','$lastname','$othername','$matricNo','$password','$dateCreated','$contactNum','$departmentId')";
-                            $insertRes = $con->query($insertStu);
 
-                            if ($insertRes) {
-
-                                $alertStyle = "alert alert-success";
-                                $statusMsg = "Pupil Added Successfully!";
-                            } else {
-                                $alertStyle = "alert alert-danger";
-                                $statusMsg = "An error Occurred!";
-                            }
                         }
 
 
@@ -266,11 +275,16 @@ error_reporting(0);
 
 
                                                     </div> -->
-
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="cc-exp" class="control-label mb-1">Contact Number </label>
-                                                            <input id="" name="contactNum" type="text" class="form-control cc-exp" value="" placeholder="09554688799">
+                                                            <input id="" name="contactNum" type="text" class="form-control cc-exp" placeholder="09554688799">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="cc-exp" class="control-label mb-1">Profile</label>
+                                                            <input name="profile" type="file" class="form-control cc-exp">
                                                         </div>
                                                     </div>
 

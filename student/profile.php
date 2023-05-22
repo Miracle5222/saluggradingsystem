@@ -83,50 +83,51 @@ error_reporting(0);
             </div>
         </div>
 
-        <div class="content">
-            <div class="animated fadeIn">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Pupil Information</strong>
+        <div class="content ">
+
+            <?php
+            $querys = mysqli_query($con, "select * from tblstudent where matricNo='$matricNo'");
+            $rrow = mysqli_fetch_array($querys);
+
+            ?>
+
+
+            <div class="row ">
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Pupil Profile</h3>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <img src="../images/<?= $rrow['profile'] ?>" alt="profile" height="120" width="120">
                             </div>
-                            <div class="card-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Pupil ID</th>
-                                            <th scope="col">First Name</th>
-                                            <th scope="col">Last Name</th>
-                                            <th scope="col">Other Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php
-                                            $querys = mysqli_query($con, "select * from tblstudent where matricNo='$matricNo'");
-                                            $rrow = mysqli_fetch_array($querys);
 
-                                            ?>
-
-                                            <td><?= $rrow['matricNo'] ?></td>
-                                            <td><?= $rrow['firstName'] ?></td>
-                                            <td><?= $rrow['lastName'] ?></td>
-                                            <td><?= $rrow['otherName'] ?></td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-
+                            <div class="form-group">
+                                <label>Pupil ID:</label>
+                                <p class="form-control-static"><?php echo $rrow['matricNo'] ?></p>
                             </div>
-                        </div> <!-- .card -->
+
+                            <div class="form-group">
+                                <label>First Name:</label>
+                                <p class="form-control-static"><?php echo $rrow['firstName'] ?></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name:</label>
+                                <p class="form-control-static"><?php echo $rrow['lastName'] ?></p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Other Name:</label>
+                                <p class="form-control-static"><?php echo $rrow['otherName'] ?></p>
+                            </div>
+                        </div>
                     </div>
-                    <!--/.col-->
-
-
-
                 </div>
-            </div><!-- .animated -->
+            </div>
         </div><!-- .content -->
 
         <div class="clearfix"></div>

@@ -92,40 +92,42 @@ error_reporting(0);
                         if (isset($_POST['submit'])) {
 
 
-                            if ($_FILES['profile']['name'] == "") {
-                                $file_name = $rrow['profile'];
-                            } else {
+
+
+
+                            if (isset($_FILES['profile']['name'])) {
+
                                 $file_name = $_FILES['profile']['name'];
-                            }
-
-                            $file_tmp = $_FILES['profile']['tmp_name'];
-
-                            move_uploaded_file($file_tmp, "../img/" . $file_name);
-
-                            $alertStyle = "";
-                            $statusMsg = "";
 
 
-                            $firstname = $_POST['firstname'];
-                            $lastname = $_POST['lastname'];
+                                $file_tmp = $_FILES['profile']['tmp_name'];
+                                move_uploaded_file($file_tmp, "../images/" . $file_name);
 
-                            $emailAddress = $_POST['emailAddress'];
-                            $phoneNo = $_POST['phoneNo'];
-                            $password = $_POST['password'];
+                                $alertStyle = "";
+                                $statusMsg = "";
 
 
-                            $ret = mysqli_query($con, "update tbladmin set firstName='$firstname', profile= '$file_name', lastName='$lastname',  
-      emailAddress='$emailAddress', phoneNo='$phoneNo', password = '$password' where staffId='$staffId'");
+                                $firstname = $_POST['firstname'];
+                                $lastname = $_POST['lastname'];
 
-                            if ($ret == TRUE) {
-                                $_SESSION['departmentId'] =  $department;
-                                $alertStyle = "alert alert-success";
-                                $statusMsg = "Profile Updated Successfully!";
-                                header("Location: updateProfile.php");
-                            } else {
-                                $alertStyle = "alert alert-danger";
-                                $statusMsg = "An error Occurred!";
-                                header("Location: updateProfile.php");
+                                $emailAddress = $_POST['emailAddress'];
+                                $phoneNo = $_POST['phoneNo'];
+                                $password = $_POST['password'];
+
+
+                                $ret = mysqli_query($con, "update tbladmin set firstName='$firstname', profile= '$file_name', lastName='$lastname',  
+          emailAddress='$emailAddress', phoneNo='$phoneNo', password = '$password' where staffId='$staffId'");
+
+                                if ($ret == TRUE) {
+                                    $_SESSION['departmentId'] =  $department;
+                                    $alertStyle = "alert alert-success";
+                                    $statusMsg = "Profile Updated Successfully!";
+                                    header("Location: updateProfile.php");
+                                } else {
+                                    $alertStyle = "alert alert-danger";
+                                    $statusMsg = "An error Occurred!";
+                                    header("Location: updateProfile.php");
+                                }
                             }
                         }
                     } else {
@@ -135,29 +137,37 @@ error_reporting(0);
 
                         if (isset($_POST['submit'])) {
 
-                            $alertStyle = "";
-                            $statusMsg = "";
-                            $profile = $_POST['profile'];
-                            $firstname = $_POST['firstname'];
-                            $lastname = $_POST['lastname'];
+                            if (isset($_FILES['profile']['name'])) {
 
-                            $emailAddress = $_POST['emailAddress'];
-                            $phoneNo = $_POST['phoneNo'];
-                            $password = $_POST['password'];
-                            $department = $_POST['department'];
+                                $file_name = $_FILES['profile']['name'];
 
-                            $ret = mysqli_query($con, "update tblstaff set firstName='$firstname', departmentId='$department',  lastName='$lastname',  
-  emailAddress='$emailAddress', phoneNo='$phoneNo', password = '$password' where staffId='$staffId'");
 
-                            if ($ret == TRUE) {
-                                $_SESSION['departmentId'] =  $department;
-                                $alertStyle = "alert alert-success";
-                                $statusMsg = "Profile Updated Successfully!";
-                                header("Location: updateProfile.php");
-                            } else {
-                                $alertStyle = "alert alert-danger";
-                                $statusMsg = "An error Occurred!";
-                                header("Location: updateProfile.php");
+                                $file_tmp = $_FILES['profile']['tmp_name'];
+                                move_uploaded_file($file_tmp, "../images/" . $file_name);
+                                $alertStyle = "";
+                                $statusMsg = "";
+                                $profile = $_POST['profile'];
+                                $firstname = $_POST['firstname'];
+                                $lastname = $_POST['lastname'];
+
+                                $emailAddress = $_POST['emailAddress'];
+                                $phoneNo = $_POST['phoneNo'];
+                                $password = $_POST['password'];
+                                $department = $rrow['departmentId'];
+
+                                $ret = mysqli_query($con, "update tblstaff set firstName='$firstname', departmentId='$department', profile= '$file_name', lastName='$lastname',  
+      emailAddress='$emailAddress', phoneNo='$phoneNo', password = '$password' where staffId='$staffId'");
+
+                                if ($ret == TRUE) {
+                                    $_SESSION['departmentId'] =  $department;
+                                    $alertStyle = "alert alert-success";
+                                    $statusMsg = "Profile Updated Successfully!";
+                                    header("Location: updateProfile.php");
+                                } else {
+                                    $alertStyle = "alert alert-danger";
+                                    $statusMsg = "An error Occurred!";
+                                    header("Location: updateProfile.php");
+                                }
                             }
                         }
                     }
@@ -170,7 +180,7 @@ error_reporting(0);
                             </div>
                             <div class="card-body">
                                 <div style="margin-left:25px; ">
-                                    <img src="<?= "../img/$rrow[profile]" ?>" style="height: 150px; width:auto;" alt="">
+                                    <img src="<?= "../images/$rrow[profile]" ?>" style="height: 150px; width:auto;" alt="">
                                 </div>
                                 <!-- Credit Card -->
                                 <div id="pay-invoice">
@@ -178,11 +188,11 @@ error_reporting(0);
 
                                         <div class="<?php echo $alertStyle; ?> alert-dismissible fade show" role="alert">
                                             <?php echo $statusMsg; ?>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
-                                            </button>
+                                            </button> -->
                                         </div>
-                                        <form method="Post" action="">
+                                        <form method="Post" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
@@ -202,13 +212,13 @@ error_reporting(0);
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="x_card_code" class="control-label mb-1">Email Address</label>
-                                                            <input id="" name="emailAddress" type="email" class="form-control cc-cvc" value="<?php echo $rrow['emailAddress']; ?>" Required data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" placeholder="Email Address">
+                                                            <input id="" name="emailAddress" type="email" class="form-control cc-cvc" value="<?php echo $rrow['emailAddress']; ?>" placeholder="Email Address">
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="cc-exp" class="control-label mb-1">Phone Number</label>
-                                                            <input id="" name="phoneNo" type="text" class="form-control cc-exp" value="<?php echo $rrow['phoneNo']; ?>" Required data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="Phone Number">
+                                                            <input id="" name="phoneNo" type="text" class="form-control cc-exp" value="<?php echo $rrow['phoneNo']; ?>" placeholder="Phone Number">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -228,8 +238,8 @@ error_reporting(0);
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <?php
-                                                if ($_SESSION['adminTypeId'] == 1) { ?>
+                                                <!-- <?php
+                                                        if ($_SESSION['adminTypeId'] == 1) { ?>
 
                                                 <?php    } else { ?>
                                                     <div class="row">
@@ -244,7 +254,7 @@ error_reporting(0);
                                                     </div>
                                                 <?php    }
 
-                                                ?>
+                                                ?> -->
 
 
                                                 <button type="submit" name="submit" class="btn btn-success">Update Profile</button>

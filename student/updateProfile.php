@@ -14,6 +14,8 @@ $rows = mysqli_fetch_array($querys);
 
 if (isset($_POST['submit'])) {
 
+
+
     $alertStyle = "";
     $statusMsg = "";
 
@@ -23,38 +25,35 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     $pupilID = $_POST['pupilID'];
 
+    if (isset($_FILES['profile']['name'])) {
+
+        $file_name = $_FILES['profile']['name'];
 
 
-    // $ret = mysqli_query($con, "UPDATE tblstudent SET firstName = ' $firstname ', password= '$password ', matricNo= '$pupilID' ,otherName = '$othername', lastName='$lastname',  WHERE matricNo= '$pupilID'");
-
-    // if ($ret == TRUE) {
-
-    //     $alertStyle = "alert alert-success";
-    //     $statusMsg = "Profile Updated Successfully!";
-    // } else {
-    //     $alertStyle = "alert alert-danger";
-    //     $statusMsg = "An error Occurred!";
-    // }
+        $file_tmp = $_FILES['profile']['tmp_name'];
+        move_uploaded_file($file_tmp, "../images/" . $file_name);
 
 
-    $sql = "UPDATE tblstudent SET firstName = '$firstname', lastName = '$lastname', otherName = '$othername', PASSWORD = '$password' , matricNo = '$pupilID' WHERE matricNo = '$matricNo'";
 
-    if ($con->query($sql) === TRUE) {
-        $statusMsg = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        $sql = "UPDATE tblstudent SET firstName = '$firstname', lastName = '$lastname', otherName = '$othername', PASSWORD = '$password' , matricNo = '$pupilID', profile = '$file_name' WHERE matricNo = '$matricNo'";
+
+        if ($con->query($sql) === TRUE) {
+            $statusMsg = '<div class="alert alert-success alert-dismissible fade show" role="alert">
 Profile Updated Successfully!
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
   <span aria-hidden="true">&times;</span>
 </button>
 </div>';
-        $_SESSION['matricNo'] = $pupilID;
-    } else {
+            $_SESSION['matricNo'] = $pupilID;
+        } else {
 
-        $statusMsg = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            $statusMsg = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         An error Occurred!
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         </div>';
+        }
     }
 }
 ?>
@@ -174,6 +173,10 @@ Profile Updated Successfully!
                                                 <div class="form-group">
                                                     <label for="firstname" class="control-label">Password</label>
                                                     <input type="password" id="password" name="password" class="form-control" value="<?= $rows['password'] ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="file" class="control-label">Profile</label>
+                                                    <input type="file" id="password" name="profile" class="form-control" value="<?= $rows['profile'] ?>">
                                                 </div>
                                                 <div class="form-group">
 

@@ -103,6 +103,92 @@ if (isset($_GET['matricNo']) && isset($_GET['departmentId']) && isset($_GET['sem
             }
         </script>
 
+
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <!--/.col-->
+                    <?php
+
+                    ?>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                    <h2 align="center">All Pupils</h2>
+                                </strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table" class="table table-hover table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Subject</th>
+
+                                            <th>Grades</th>
+
+                                            <th>Date Added</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
+                                        if ($_SESSION['adminTypeId'] == 1) {
+                                            $ret = mysqli_query($con, "SELECT tblresult.`resultId`, tblresult.`grade` ,tblcourse.`subjectTitle`,tblcourse.`subjectId`, tblstudent.`firstName`,tblstudent.`lastName`,tblstudent.`schoolyear`, tblsemester.`grading`, tbllevel.`levelName` FROM tblresult INNER JOIN tblcourse ON tblcourse.`subjectId` = tblresult.`subjectId`
+                                            INNER JOIN tblstudent ON tblstudent.`StudentId` = tblresult.`StudentId` INNER JOIN tblsemester ON tblsemester.`grading_Id`= tblresult.`gradingId` INNER JOIN tbldepartment ON tbldepartment.`departmentId` = tblresult.`departmentId` INNER JOIN tbllevel ON  tbllevel.`levelId` = tbldepartment.`levelId` WHERE tblsemester.`grading_Id` = '$_GET[semesterId]' and  tblstudent.`matricNo` = '$_GET[matricNo]' 
+                                            ");
+                                        } else {
+                                            $ret = mysqli_query($con, "SELECT tblresult.`resultId`, tblresult.`grade` ,tblcourse.`subjectTitle` ,tblcourse.`subjectId`, tblstudent.`firstName`,tblstudent.`lastName`,tblstudent.`schoolyear`, tblsemester.`grading`, tbllevel.`levelName` FROM tblresult INNER JOIN tblcourse ON tblcourse.`subjectId` = tblresult.`subjectId`
+                                            INNER JOIN tblstudent ON tblstudent.`StudentId` = tblresult.`StudentId` INNER JOIN tblsemester ON tblsemester.`grading_Id`= tblresult.`gradingId` INNER JOIN tbldepartment ON tbldepartment.`departmentId` = tblresult.`departmentId` INNER JOIN tbllevel ON  tbllevel.`levelId` = tbldepartment.`levelId` WHERE tblstudent.`matricNo` = '$_GET[matricNo]' and tblsemester.`grading_Id` = '$_GET[semesterId]'");
+                                        }
+
+                                        $cnt = 1;
+                                        while ($row = mysqli_fetch_array($ret)) {
+                                        ?>
+                                            <tr>
+
+                                                <td><?= $row['resultId'] ?></td>
+                                                <td><?= $row['subjectTitle']; ?></td>
+
+                                                <td><?= $row['grade']; ?></td>
+
+
+                                                <td><?= $row['schoolyear']; ?></td>
+
+
+                                                <td>
+                                                    <!-- <a href="editStudent.php?editStudentId=<?php echo $row['matricNo']; ?>" title="Edit Details">
+                                                        <i class="fa fa-edit fa-1x"></i>
+                                                    </a> -->
+                                                    <!-- 
+                                                    <a onclick="return confirm('Are you sure you want to delete?')" href="deleteStudent.php?delid=<?php echo $row['matricNo']; ?>" title="Delete Student Details">
+                                                        <i class="fa fa-trash fa-1x"></i>
+                                                    </a> -->
+                                                    <a href="editsubjectGrades.php?matricNo=<?= $_GET['matricNo'] ?>&semesterId=<?= $_GET['semesterId'] ?>&departmentId=<?= $_GET['departmentId'] ?>&subjectId=<?= $row['subjectId'] ?>">
+                                                        <i class="fa fa-edit fa-1x"></i>
+                                                    </a>
+
+                                                </td>
+                                            </tr>
+                                        <?php
+
+                                        } ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- end of datatable -->
+
+            </div>
+            <?php include 'includes/footer.php'; ?>
+        </div><!-- .animated -->
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -191,93 +277,8 @@ if (isset($_GET['matricNo']) && isset($_GET['departmentId']) && isset($_GET['sem
                 </div>
             </div>
         </div>
-        <div class="content">
-            <div class="animated fadeIn">
-                <div class="row">
-
-                    <!--/.col-->
-                    <?php
-
-                    ?>
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">
-                                    <h2 align="center">All Pupils</h2>
-                                </strong>
-                            </div>
-                            <div class="card-body">
-                                <table id="bootstrap-data-table" class="table table-hover table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Subject</th>
-
-                                            <th>Grades</th>
-
-                                            <th>Date Added</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <?php
-                                        if ($_SESSION['adminTypeId'] == 1) {
-                                            $ret = mysqli_query($con, "SELECT tblresult.`resultId`, tblresult.`grade` ,tblcourse.`subjectTitle`,tblcourse.`subjectId`, tblstudent.`firstName`,tblstudent.`lastName`,tblstudent.`schoolyear`, tblsemester.`grading`, tbllevel.`levelName` FROM tblresult INNER JOIN tblcourse ON tblcourse.`subjectId` = tblresult.`subjectId`
-                                            INNER JOIN tblstudent ON tblstudent.`StudentId` = tblresult.`StudentId` INNER JOIN tblsemester ON tblsemester.`grading_Id`= tblresult.`gradingId` INNER JOIN tbldepartment ON tbldepartment.`departmentId` = tblresult.`departmentId` INNER JOIN tbllevel ON  tbllevel.`levelId` = tbldepartment.`levelId` WHERE tblsemester.`grading_Id` = '$_GET[semesterId]' and  tblstudent.`matricNo` = '$_GET[matricNo]' 
-                                            ");
-                                        } else {
-                                            $ret = mysqli_query($con, "SELECT tblresult.`resultId`, tblresult.`grade` ,tblcourse.`subjectTitle` ,tblcourse.`subjectId`, tblstudent.`firstName`,tblstudent.`lastName`,tblstudent.`schoolyear`, tblsemester.`grading`, tbllevel.`levelName` FROM tblresult INNER JOIN tblcourse ON tblcourse.`subjectId` = tblresult.`subjectId`
-                                            INNER JOIN tblstudent ON tblstudent.`StudentId` = tblresult.`StudentId` INNER JOIN tblsemester ON tblsemester.`grading_Id`= tblresult.`gradingId` INNER JOIN tbldepartment ON tbldepartment.`departmentId` = tblresult.`departmentId` INNER JOIN tbllevel ON  tbllevel.`levelId` = tbldepartment.`levelId` WHERE tblstudent.`matricNo` = '$_GET[matricNo]' and tblsemester.`grading_Id` = '$_GET[semesterId]'");
-                                        }
-
-                                        $cnt = 1;
-                                        while ($row = mysqli_fetch_array($ret)) {
-                                        ?>
-                                            <tr>
-
-                                                <td><?= $row['resultId'] ?></td>
-                                                <td><?= $row['subjectTitle']; ?></td>
-
-                                                <td><?= $row['grade']; ?></td>
-
-
-                                                <td><?= $row['schoolyear']; ?></td>
-
-
-                                                <td>
-                                                    <!-- <a href="editStudent.php?editStudentId=<?php echo $row['matricNo']; ?>" title="Edit Details">
-                                                        <i class="fa fa-edit fa-1x"></i>
-                                                    </a> -->
-                                                    <!-- 
-                                                    <a onclick="return confirm('Are you sure you want to delete?')" href="deleteStudent.php?delid=<?php echo $row['matricNo']; ?>" title="Delete Student Details">
-                                                        <i class="fa fa-trash fa-1x"></i>
-                                                    </a> -->
-                                                    <a href="editsubjectGrades.php?matricNo=<?= $_GET['matricNo'] ?>&semesterId=<?= $_GET['semesterId'] ?>&departmentId=<?= $_GET['departmentId'] ?>&subjectId=<?= $row['subjectId'] ?>">
-                                                        <i class="fa fa-edit fa-1x"></i>
-                                                    </a>
-
-                                                </td>
-                                            </tr>
-                                        <?php
-
-                                        } ?>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- end of datatable -->
-
-            </div>
-            <?php include 'includes/footer.php'; ?>
-        </div><!-- .animated -->
-
     </div><!-- .content -->
+
 
     <div class="clearfix"></div>
 

@@ -195,7 +195,7 @@ INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` 
                                                                     if (strlen($rows['grade']) > 0) { ?>
                                                                         <td><a href="viewGradeResult.php?semesterId=2&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
                                                                     <?php   } else { ?>
-                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
+                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=2&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
                                                                     <?php
                                                                     }
                                                                     ?>
@@ -205,7 +205,7 @@ INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` 
                                                                     if (strlen($rows['grade']) > 0) { ?>
                                                                         <td><a href="viewGradeResult.php?semesterId=3&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
                                                                     <?php   } else { ?>
-                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
+                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=3&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
                                                                     <?php
                                                                     }
                                                                     ?>
@@ -216,7 +216,7 @@ INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` 
                                                                     if (strlen($rows['grade']) > 0) { ?>
                                                                         <td><a href="viewGradeResult.php?semesterId=4&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
                                                                     <?php   } else { ?>
-                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=1&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
+                                                                        <td><a class="text-danger" href="viewGradeResult.php?semesterId=4&matricNo=<?php echo $row['matricNo']; ?>&departmentId=<?php echo $row['departmentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x "></i> View</a></td>
                                                                     <?php
                                                                     }
                                                                     ?>
@@ -225,9 +225,9 @@ INNER JOIN tblcourse ON tblcourse.`departmentId` = tbldepartment.`departmentId` 
                                                                     $sqls = mysqli_query($con, "SELECT grade,StudentId FROM tblresult WHERE gradingId = 4 and StudentId = '$row[StudentId]' ");
                                                                     $rows = mysqli_fetch_array($sqls);
                                                                     if (strlen($rows['grade']) > 0) { ?>
-                                                                        <td><a href="finalStudentGrades.php?subjectId=<?= $row['subjectId'] ?>&departmentId=<?php echo $row['departmentId']; ?>&StudentId=<?php echo $row['StudentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                        <td><a href="samplefinalGrades.php?subjectId=<?= $row['subjectId'] ?>&departmentId=<?php echo $row['departmentId']; ?>&StudentId=<?php echo $row['StudentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
                                                                     <?php   } else { ?>
-                                                                        <td><a class="text-danger" href="finalStudentGrades.php?subjectId=<?= $row['subjectId'] ?>&departmentId=<?php echo $row['departmentId']; ?>&StudentId=<?php echo $row['StudentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
+                                                                        <td><a class="text-danger" href="samplefinalGrades.php?subjectId=<?= $row['subjectId'] ?>&departmentId=<?php echo $row['departmentId']; ?>&StudentId=<?php echo $row['StudentId']; ?>" title="View Details"><i class="fa fa-eye fa-1x"></i> View</a></td>
                                                                     <?php
                                                                     }
                                                                     ?>
