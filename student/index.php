@@ -110,95 +110,6 @@ $row = mysqli_fetch_array($query)
 
         </div>
         <div class="content">
-            <div class="animated fadeIn">
-                <div class="row">
-
-                    <div class="col-lg-12">
-                        <div class="card">
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">
-                                    <h3 align="center">GRADING CRITERIA</h3>
-                                </strong>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-hover table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Results</th>
-                                            <th>Average</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr>
-                                            <td bgcolor="#32ff7e">Outstanding</td>
-                                            <td bgcolor="#32ff7e">90-100</td>
-                                        </tr>
-                                        <tr>
-                                            <td bgcolor="#7bed9f">Very Satisfactory</td>
-                                            <td bgcolor="#7bed9f">85-89</td>
-                                        </tr>
-                                        <tr>
-                                            <td bgcolor="#97fdae">Satisfactory</td>
-                                            <td bgcolor="#97fdae">80-84</td>
-                                        </tr>
-                                        <tr>
-                                            <td bgcolor="#fffa65">Fairly Satisfactory</td>
-                                            <td bgcolor="#fffa65">75-79</td>
-                                        </tr>
-                                        <tr>
-                                            <td bgcolor="#ff4757">Did Not Meet Expectations</td>
-                                            <td bgcolor="#ff4757">Below 75</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <!-------------------------- FROM THE FINAL RESULT TABLE --------------------------->
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Grade</th>
-                                            <th>Letter Grade</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>90 - 100</td>
-                                            <td>A+</td>
-                                        </tr>
-                                        <tr>
-                                            <td>85 - 89</td>
-                                            <td>B</td>
-                                        </tr>
-                                        <tr>
-                                            <td>80 - 84</td>
-                                            <td>C</td>
-                                        </tr>
-                                        <tr>
-                                            <td>75 - 79</td>
-                                            <td>D</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Below 74</td>
-                                            <td>F</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-        <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
                 <!-- Widgets  -->
@@ -217,7 +128,7 @@ $row = mysqli_fetch_array($query)
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">
-                                    <h3 align="center">Student Records</h3>
+                                    <h3 align="center">Pupil Records</h3>
                                 </strong>
                             </div>
                             <div class="card-body">
@@ -308,6 +219,96 @@ INNER JOIN tblsemester ON tblsemester.`grading_Id` = tblresult.`gradingId` WHERE
                         </div>
                     </div>
                 </div>
+                <div class="content">
+                    <div class="animated fadeIn">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="card">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong class="card-title">
+                                            <h3 align="center">GRADING CRITERIA</h3>
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-hover table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Results</th>
+                                                    <th>Average</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr>
+                                                    <td bgcolor="#32ff7e">Outstanding</td>
+                                                    <td bgcolor="#32ff7e">90-100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td bgcolor="#7bed9f">Very Satisfactory</td>
+                                                    <td bgcolor="#7bed9f">85-89</td>
+                                                </tr>
+                                                <tr>
+                                                    <td bgcolor="#97fdae">Satisfactory</td>
+                                                    <td bgcolor="#97fdae">80-84</td>
+                                                </tr>
+                                                <tr>
+                                                    <td bgcolor="#fffa65">Fairly Satisfactory</td>
+                                                    <td bgcolor="#fffa65">75-79</td>
+                                                </tr>
+                                                <tr>
+                                                    <td bgcolor="#ff4757">Did Not Meet Expectations</td>
+                                                    <td bgcolor="#ff4757">Below 75</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-------------------------- FROM THE FINAL RESULT TABLE --------------------------->
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Grade</th>
+                                                    <th>Letter Grade</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>90 - 100</td>
+                                                    <td>A+</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>85 - 89</td>
+                                                    <td>B</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>80 - 84</td>
+                                                    <td>C</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>75 - 79</td>
+                                                    <td>D</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Below 74</td>
+                                                    <td>F</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
                 <!-- /Widgets -->
                 <!--  Traffic  -->
                 <div class="row">

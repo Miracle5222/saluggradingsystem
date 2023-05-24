@@ -21,16 +21,16 @@
 
                  <div class="user-area dropdown float-right">
                      <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         <!-- <?php
+                                if ($_SESSION['adminTypeId'] == 1) {
+                                    $querys = mysqli_query($con, "select * from tblstudent where matricNo='$matricNo'");
+                                    $rows = mysqli_fetch_array($querys);
+                                ?>
                          <?php
-                            if ($_SESSION['adminTypeId'] == 1) {
-                                $querys = mysqli_query($con, "select * from tblstudent where matricNo='$matricNo'");
-                                $rows = mysqli_fetch_array($querys);
-                            ?>
-                         <?php
-                            } else {  ?>
+                                } else {  ?>
 
                          <?php }
-                            ?>
+                            ?> -->
                          <img class="user-avatar rounded-circle" src="../assets/img/user2.png" alt="User Avatar">
                      </a>
 
